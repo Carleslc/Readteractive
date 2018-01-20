@@ -2,7 +2,6 @@
 title: Librojuego de ejemplo
 author: Carlos Lázaro Costa
 language: es
-cover-image: cover.jpeg
 description: |
     Esta es la descripción del libro, puede ser tan larga como quieras.
     
