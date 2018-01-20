@@ -8,7 +8,7 @@ PDF_MARGIN = 3cm
 
 LANGUAGE = $(shell python3 get-property.py ${DIR}/_meta.yml language --default en)
 
-COVER_IMAGE = $(shell python3 get-property.py ${DIR}/_meta.yml cover-image 2>/dev/null)
+COVER_IMAGE = $(shell python3 get-property.py ${DIR}/_meta.yml cover-image)
 COVER = $(if ${COVER_IMAGE},--epub-cover-image=${DIR}/${COVER_IMAGE},)
 
 all: clean pdf epub mobi
