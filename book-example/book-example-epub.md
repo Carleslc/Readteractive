@@ -2,14 +2,12 @@
 title: Librojuego de ejemplo
 author: Carlos Lázaro Costa
 language: es
-abstract: |
+cover-image: cover.jpeg
+description: |
     Esta es la descripción del libro, puede ser tan larga como quieras.
-
+    
     Incluso puedes poner saltos de línea.
 ---
-
-![](cover.jpeg)
-\newpage
 
 # Comencemos por el principio
 

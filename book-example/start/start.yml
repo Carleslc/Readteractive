@@ -1,15 +1,14 @@
-title: "Librojuego de ejemplo"
+title: Comencemos por el principio
 description: |
-  _Esta es la descripción del libro._
-  Simplemente es para ver como quedaría.
+  Érase una vez un ejemplo, una simple y escueta prueba.
 
   [Tierra](green-earth.png)
 
-  Vaya, un ejemplo.
+  Con imágenes e incluso listas de cosas.
 
   - Cosa 1
   - Cosa 2
 
-  Incluso con **negrita**.
+  Es más, incluso con **negrita**.
 
   :end-> Ir al final

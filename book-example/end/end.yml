@@ -1,5 +1,5 @@
 from: start
-title: "Game over" # optional
+title: Game over # optional
 description: |
   Oops!! Has muerto.
 
