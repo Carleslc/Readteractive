@@ -3,9 +3,10 @@ title: Librojuego de ejemplo
 author: Carlos Lázaro Costa
 language: es
 abstract: |
-    Esta es la descripción del libro, puede ser tan larga como quieras.
+	Esta es la descripción del libro, puede ser tan larga como quieras.
+	
+	Incluso puedes poner saltos de línea.
 
-    Incluso puedes poner saltos de línea.
 ---
 
 ![](cover.jpeg)
@@ -24,7 +25,8 @@ Con imágenes e incluso listas de cosas.
 
 Es más, incluso con **negrita**.
 
-- [**Ir al final**](#game-over)
+- ([**Ir al final**](#game-over))
+
 \newpage
 
 # Game over
@@ -35,4 +37,5 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque suscipit, enim 
 
 Donec commodo diam ut feugiat rutrum. Etiam placerat massa metus, vitae vehicula felis feugiat vel. Duis ultricies finibus turpis, nec bibendum eros euismod sed. Duis ac nulla non ligula vehicula sollicitudin vitae at diam. Ut euismod enim ac eros suscipit rutrum. Vestibulum lacus dui, ullamcorper sed auctor at, egestas non purus. Curabitur ac tortor neque. Donec nec vehicula purus. In nec nisi vel urna mollis accumsan a pharetra ante. Vestibulum tempor dapibus metus nec mollis. Etiam mollis turpis ut lectus luctus, ac facilisis lorem porta. Nulla eu eros suscipit, pretium magna eget, convallis sapien. Nullam urna lacus, mollis quis lectus quis, euismod faucibus velit. Maecenas eget mattis nuncum.
 
-- [_(Retroceder)_](#comencemos-por-el-principio)
+\newpage
+

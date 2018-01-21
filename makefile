@@ -6,15 +6,18 @@ DIR = ${BOOK}
 
 PDF_MARGIN = 3cm
 
-LANGUAGE = $(shell python3 get-property.py ${DIR}/_meta.yml language --default en)
+LANGUAGE = $(shell python3 get_property.py ${DIR}/_meta.yml language --default en)
 
-COVER_IMAGE = $(shell python3 get-property.py ${DIR}/_meta.yml cover-image)
+COVER_IMAGE = $(shell python3 get_property.py ${DIR}/_meta.yml cover-image)
 COVER = $(if ${COVER_IMAGE},--epub-cover-image=${DIR}/${COVER_IMAGE},)
 
-all: clean pdf epub mobi
+all: clean markdown pdf epub mobi
 
 clean:
-	rm -f ${DIR}/${BOOK}.pdf ${BOOK}.epub ${DIR}/${BOOK}.mobi
+	rm -f ${DIR}/${BOOK}*
+
+markdown:
+	python3 process_book.py ${BOOK}
 
 pdf:
 	pandoc --resource-path=${DIR} -V lang=${LANGUAGE} ${DIR}/${BOOK}.md -o ${DIR}/${BOOK}.pdf -V geometry:margin=${PDF_MARGIN}
