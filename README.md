@@ -5,33 +5,35 @@ Tool for writing and generating interactive books, also known as gamebooks.
 
 <!-- MarkdownTOC -->
 
-- [What is a gamebook?](##what-is-a-gamebook)
-- [Getting started](##getting-started)
-    - [Install dependencies](##install-dependencies)
-    - [CLI](##cli)
-        - [Features](##features)
-        - [Dependencies](##dependencies)
-    - [Readteractive structure](##readteractive-structure)
-        - [Top folder](##top-folder)
-        - [Books and chapters folders](##books-and-chapters-folders)
-        - [Book metadata](##book-metadata)
-        - [Chapter](##chapter)
-    - [How to build your book](##how-to-build-your-book)
-    - [How to write your book](##how-to-write-your-book)
-        - [How to write options](##how-to-write-options)
-        - [Styling your book](##styling-your-book)
-            - [Markdown](##markdown)
-            - [CSS](##css)
-            - [PDF Margin](##pdf-margin)
-            - [Page break and new lines](##page-break-and-new-lines)
-            - [MathML](##mathml)
-- [TODO](##todo)
+- [What is a gamebook?](#what-is-a-gamebook)
+- [Getting started](#getting-started)
+    - [Install dependencies](#install-dependencies)
+    - [CLI](#cli)
+        - [Features](#features)
+        - [Dependencies](#dependencies)
+    - [Readteractive structure](#readteractive-structure)
+        - [Top folder](#top-folder)
+        - [Books and chapters folders](#books-and-chapters-folders)
+        - [Book metadata](#book-metadata)
+        - [Chapter](#chapter)
+    - [How to build your book](#how-to-build-your-book)
+    - [How to write your book](#how-to-write-your-book)
+        - [How to write options](#how-to-write-options)
+        - [Styling your book](#styling-your-book)
+            - [Markdown](#markdown)
+            - [CSS](#css)
+            - [PDF Margin](#pdf-margin)
+            - [Page break and new lines](#page-break-and-new-lines)
+            - [MathML](#mathml)
+- [TODO](#todo)
 
 <!-- /MarkdownTOC -->
 
 ## What is a gamebook?
 
 A [gamebook](https://en.wikipedia.org/wiki/Gamebook) is a work of printed fiction that allows the reader to participate in the story by making choices. Gamebooks have been influenced by [_Choose Your Own Adventure_ Series](https://en.wikipedia.org/wiki/Choose_Your_Own_Adventure) and tabletop role-playing games.
+
+![Adventure Time](http://i0.kym-cdn.com/photos/images/original/001/210/794/4e1.jpg)
 
 Production of new gamebooks in the West decreased dramatically during the nineties as choice based stories have moved away from print based media, although the format may be getting a new lease of life on mobile and ebook platforms. Such digital gamebooks are considered [interactive fiction](https://en.wikipedia.org/wiki/Interactive_fiction).
 
