@@ -30,12 +30,12 @@ def format_property(key, value):
         value = '|\n'
         for line in lines:
             value += '\t' + line + '\n'
-    return '%s: %s\n' % (key, value)
+    return '%s: %s' % (key, value)
 
 def front_matter(description_key):
-    meta = format_property('title', BOOK.title)
-    meta += format_property('author', BOOK.author)
-    meta += format_property('language', BOOK.language)
+    meta = format_property('title', BOOK.title) + '\n'
+    meta += format_property('author', BOOK.author) + '\n'
+    meta += format_property('language', BOOK.language) + '\n'
     meta += format_property(description_key, BOOK.description)
     return meta
 
@@ -47,12 +47,14 @@ def format_cover():
     cover_string += new_line()
     return cover_string
 
-def format_chapter(chapter):
+def format_chapter(chapter, last=False):
     chapter_string = '# %s\n\n' % chapter.title
     chapter_string += chapter.text
-    chapter_string += new_line(lines=2)
-    chapter_string += new_page()
     chapter_string += new_line()
+    if not last:
+        chapter_string += new_line()
+        chapter_string += new_page()
+        chapter_string += new_line()
     return chapter_string
 
 def generate(epub=False):
@@ -64,8 +66,8 @@ def generate(epub=False):
         new_line(book)
         if not epub: # epub already have cover image as metadata
             book.write(format_cover())
-        for chapter in BOOK.chapters:
-            book.write(format_chapter(chapter))
+        for i, chapter in enumerate(BOOK.chapters):
+            book.write(format_chapter(chapter, last=(i == len(BOOK.chapters) - 1)))
 
 if __name__ == "__main__":
     set_args()

@@ -1,4 +1,3 @@
-from graph import *
 from chapter import *
 
 class Book:
