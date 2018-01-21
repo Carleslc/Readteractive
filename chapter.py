@@ -6,7 +6,7 @@ from os.path import join, isdir, abspath
 
 class Chapter:
 
-    NEXT_REGEX = re.compile(r':(.*?)\s*->\s*(.*?):',re.S|re.M)
+    NEXT_REGEX = re.compile(r'\(\s*(.*?)\s*->\s*\[\s*(.*?)\s*\]\s*\)',re.S|re.M)
     CHILD_FORMATTER = '([**%s**](#%s))'
 
     def __init__(self, book, id):
@@ -20,9 +20,9 @@ class Chapter:
 
     def parse_children(self):
         def next_replacement(match):
-            (next_id, next_text) = match.groups()
+            (next_text, next_id) = match.groups()
             if not self.book.exists_chapter(next_id):
-                error('Chapter "%s" not found (required in %s.md at ":%s -> %s:")' % (next_id, self.id, next_id, next_text))
+                error('Broken link. Chapter "%s" not found (required in %s.md at ":%s -> %s:")' % (next_id, self.id, next_id, next_text))
             self.children.add(next_id)
             return Chapter.CHILD_FORMATTER % (next_text, self.__header_markdown_reference(self.book.get_chapter(next_id).title))
         self.children = set()

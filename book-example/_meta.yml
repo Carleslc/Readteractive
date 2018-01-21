@@ -1,9 +1,8 @@
-title: Librojuego de ejemplo
-author: Carlos Lázaro Costa
+title: Example _gamebook_
+author: Carleslc
 start: start
 language: es
 cover-image: cover.jpeg
 description: |
-    Esta es la descripción del libro, puede ser tan larga como quieras.
-    
-    Incluso puedes poner saltos de línea.
+    This is the description of your book.
+    Hope you enjoy writting with Readteractive.

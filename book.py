@@ -11,7 +11,7 @@ class Book:
         metadata_file.close()
         self.title = property(metadata, 'title')
         self.author = property(metadata, 'author', optional=True)
-        self.language = property(metadata, 'language', optional=True)
+        self.language = property(metadata, 'language', optional=True, default='en')
         self.description = property(metadata, 'description', optional=True)
         self.cover = property(metadata, 'cover-image', optional=True)
         self.__start = property(metadata, 'start', optional=True)
