@@ -208,7 +208,7 @@ A gamebook has many chapters with links between them. We refer to a chapter as a
 
 If you have no previous experience writing gamebooks these are some _tips_:
 
-1. Plan your history. You can make a mind map with each of your narrative branches and which options follow which branch.
+1. Plan your story. You can make a mind map with each of your narrative branches and which options follow which branch.
 2. Define each chapter and write them with Readteractive.
 3. Visualize your chapter graph with our [CLI](https://github.com/Carleslc/readteractive-generator) whenever you need to have an overview of your book and ensure each chapter have the links you want.
 4. [Build](#how-to-build-your-book) your book from time to time to have a look of how it is looking.
@@ -268,8 +268,6 @@ Unfortunately at the moment this only works for PDF version.
 Math equations are rendered using MathML, supported for HTML and PDF but only for some EPUB3 readers and currently gives unrecognised tags on _KindleGen_ converting to MOBI.
 
 ## TODO
-
-- * History -> Story
 
 - * Full CLI on tutorial + Yeoman Sticker
 
