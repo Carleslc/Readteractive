@@ -9,14 +9,15 @@ class Chapter:
     ID_PREFIX = re.compile(r'^\d*[-_]?',re.S)
     NEXT_REGEX = re.compile(r'\(\s*([^\)]*?)\s*->\s*\[\s*(.*?)\s*\]\s*\)',re.S|re.M)
 
-    def __init__(self, book, id):
+    def __init__(self, book, full_id):
         self.book = book
-        self.id = id
-        metadata_file = self.file(self.id + '.yml')
+        self.full_id = full_id
+        self.id = Chapter.format_id(full_id)
+        metadata_file = self.file(self.full_id + '.yml')
         metadata = yaml.load(metadata_file)
         metadata_file.close()
         self.title = property(metadata, 'title')
-        self.text = self.file(self.id + '.md').read()
+        self.text = self.file(self.full_id + '.md').read()
 
     def parse_children(self):
         def next_replacement(match):
@@ -35,7 +36,7 @@ class Chapter:
         return re.sub(r'\s', '-', lower_no_punctuation)
 
     def file(self, chapter_file, mode='r'):
-        return self.book.file(join(self.id, chapter_file), mode)
+        return self.book.file(join(self.full_id, chapter_file), mode)
 
     def format_id(id):
         return re.sub(Chapter.ID_PREFIX, '', id)

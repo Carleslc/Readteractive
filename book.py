@@ -21,9 +21,9 @@ class Book:
 
     def __load_chapters(self):
         self.__chapters = dict() # mapping id to chapter
-        for id in list(filter(lambda file: isdir(join(self.id, file)), listdir(self.id))):
-            id = Chapter.format_id(id)
-            self.__chapters[id] = Chapter(self, id)
+        for full_id in list(filter(lambda file: isdir(join(self.id, file)), listdir(self.id))):
+            chapter = Chapter(self, full_id)
+            self.__chapters[chapter.id] = chapter
         for chapter in self.__chapters.values():
             chapter.parse_children() # may require other chapters, so it need to be after filling chapters dict
         # Public list of chapters sorted by id
@@ -40,10 +40,10 @@ class Book:
         error('TODO')
 
     def exists_chapter(self, id):
-        return id in self.__chapters
+        return Chapter.format_id(id) in self.__chapters
 
     def get_chapter(self, id):
-        return self.__chapters[id]
+        return self.__chapters[Chapter.format_id(id)]
 
     def get_links(self):
         def children_links(children):
