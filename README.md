@@ -303,8 +303,6 @@ Math equations are rendered using MathML, supported for HTML and PDF but only fo
 
 ## TODO
 
-- **[!]** Fix PDF generation for Tutorial book.
-
 - Add argument to hide others or keep scroll in HTML.
 
 - Add page number argument for each link (_printed gamebooks_).
