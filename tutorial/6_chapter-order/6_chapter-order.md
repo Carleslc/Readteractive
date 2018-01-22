@@ -1,6 +1,6 @@
 It is true that a gamebook does not have a strict order for chapters because users can jump from one to another according to the options they decide to follow, but sometimes is more elegant to have chapters sorted by narrative branch or other order you decide.
 
-Once book is built, the first chapter shown will be the chapter specified in **`_meta.yml`** (if provided). The following chapters are shown in alphabetical order, so you can define your own order giving a prefix to chapter identifiers like in this example:
+Once book is built, the first chapter shown will be the chapter specified in **`_meta.yml`** (if provided). The following chapters are shown in alphabetical order, but you can define your own order giving a numerical prefix to chapter identifiers like in this example:
 
 ```
 .

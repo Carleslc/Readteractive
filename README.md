@@ -163,7 +163,7 @@ The text of your chapter. You can use [Markdown](#markdown) here.
 
 It is true that a gamebook does not have a strict order for chapters because users can jump from one to another according to the options they decide to follow, but sometimes is more elegant to have chapters sorted by narrative branch or other order you decide.
 
-Once book is built, the first chapter shown will be the chapter specified in **`_meta.yml`** (if provided). The following chapters are shown in alphabetical order, so you can define your own order giving a prefix to chapter identifiers like in this example:
+Once book is built, the first chapter shown will be the chapter specified in **`_meta.yml`** (if provided). The following chapters are shown in alphabetical order, but you can define your own order giving a numerical prefix to chapter identifiers like in this example:
 
 ```
 .
@@ -299,6 +299,8 @@ Math equations are rendered using MathML, supported for HTML and PDF but only fo
 
 ## TODO
 
+- **[!]** Fix PDF generation for Tutorial book.
+
 - Add argument to hide others or keep scroll in HTML.
 
 - Add page number argument for each link (_printed gamebooks_).
@@ -307,10 +309,8 @@ Math equations are rendered using MathML, supported for HTML and PDF but only fo
 
 - Anchor hyperlinks with target=_blank
 
-- * Fix PDF generation for Tutorial book.
-
 - Check links.
 
-- * Yeoman CLI (new book, new chapter, visualize graph links, rename chapter id)
+- Yeoman CLI (new book, new chapter, visualize graph links, rename chapter id)
 
 - Additional Readme and Tutorial in Spanish.

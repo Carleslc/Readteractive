@@ -29,8 +29,8 @@ class Book:
         for chapter in self.__chapters.values():
             chapter.parse_children() # may require other chapters, so it need to be after filling chapters dict
         # Public list of chapters sorted by id
-        not_start = sorted(filter(lambda id: Chapter.format_id(id) != self.start, self.__full_ids))
-        self.chapters = [self.get_chapter(id) for id in not_start]
+        not_start = filter(lambda id: Chapter.format_id(id) != self.start, self.__full_ids)
+        self.chapters = sorted([self.get_chapter(id) for id in not_start])
         if self.start is None:
             self.start = self.chapters[0]
         else:
