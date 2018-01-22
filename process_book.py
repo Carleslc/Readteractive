@@ -74,7 +74,7 @@ def generate(format):
     with BOOK.file(filename, 'w') as book:
         book.write('---\n')
         book.write(front_matter('abstract' if format == 'pdf' else 'description'))
-        book.write('---\n')
+        book.write('\n---\n')
         if format == 'html':
             book.write('<script type="text/javascript" src="show_chapter.js"/>\n')
             chapters = ['"chapter_%s"' % chapter.id for chapter in BOOK.chapters]
