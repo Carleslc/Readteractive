@@ -1,6 +1,8 @@
 # Readteractive
 Tool for writing and generating interactive books, also known as gamebooks.
 
+[**Play this README as a gamebook!**](https://carleslc.me/Readteractive)
+
 ## Overview
 
 <!-- MarkdownTOC -->
@@ -206,7 +208,7 @@ A gamebook has many chapters with links between them. We refer to a chapter as a
 
 If you have no previous experience writing gamebooks these are some _tips_:
 
-1. Plan your history. You can make a mind map with each of your narrative branches and which options follow which branch.
+1. Plan your story. You can make a mind map with each of your narrative branches and which options follow which branch.
 2. Define each chapter and write them with Readteractive.
 3. Visualize your chapter graph with our [CLI](https://github.com/Carleslc/readteractive-generator) whenever you need to have an overview of your book and ensure each chapter have the links you want.
 4. [Build](#how-to-build-your-book) your book from time to time to have a look of how it is looking.
@@ -267,18 +269,24 @@ Math equations are rendered using MathML, supported for HTML and PDF but only fo
 
 ## TODO
 
+- * Full CLI on tutorial + Yeoman Sticker
+
+- * View on GitHub Label
+
+- TOC last page
+
 - Add argument to hide others or keep scroll in HTML.
 
 - Add page number argument for each link (printed gamebooks).
 
 - Human-readable errors (FileNotFoundError, YAML syntax).
 
-- Anchor hyperlinks with target=\_blank
+- Anchor hyperlinks with target=_blank
 
-- Fix PDF generation for Tutorial book.
+- * Fix PDF generation for Tutorial book.
 
 - Check links.
 
-- Yeoman CLI (new book, new chapter, visualize graph links, rename chapter id)
+- * Yeoman CLI (new book, new chapter, visualize graph links, rename chapter id)
 
-- Additional README in Spanish.
+- Additional Readme and Tutorial in Spanish.
