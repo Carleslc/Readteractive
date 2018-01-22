@@ -6,6 +6,7 @@ from os.path import join, isdir, abspath
 
 class Chapter:
 
+    ID_PREFIX = re.compile(r'^\d*[-_]?',re.S)
     NEXT_REGEX = re.compile(r'\(\s*([^\)]*?)\s*->\s*\[\s*(.*?)\s*\]\s*\)',re.S|re.M)
 
     def __init__(self, book, id):
@@ -20,10 +21,11 @@ class Chapter:
     def parse_children(self):
         def next_replacement(match):
             (next_text, next_id) = match.groups()
-            if not self.book.exists_chapter(next_id):
+            id_no_prefix = Chapter.format_id(next_id)
+            if not self.book.exists_chapter(id_no_prefix):
                 error('Broken link. Chapter "%s" not found (required in %s.md at ":%s -> %s:")' % (next_id, self.id, next_id, next_text))
-            self.children.add(next_id)
-            chapter = self.book.get_chapter(next_id)
+            self.children.add(id_no_prefix)
+            chapter = self.book.get_chapter(id_no_prefix)
             return self.book.child_formatter(chapter.id, next_text, self.__header_markdown_reference(chapter.title))
         self.children = set()
         self.text = re.sub(Chapter.NEXT_REGEX, next_replacement, self.text)
@@ -34,3 +36,6 @@ class Chapter:
 
     def file(self, chapter_file, mode='r'):
         return self.book.file(join(self.id, chapter_file), mode)
+
+    def format_id(id):
+        return re.sub(Chapter.ID_PREFIX, '', id)

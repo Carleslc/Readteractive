@@ -17,6 +17,7 @@ Tool for writing and generating interactive books, also known as gamebooks.
         - [Books and chapters folders](#books-and-chapters-folders)
         - [Book metadata](#book-metadata)
         - [Chapter](#chapter)
+        - [Chapters order](#chapters-order)
     - [How to build your book](#how-to-build-your-book)
     - [How to write your book](#how-to-write-your-book)
         - [How to write options](#how-to-write-options)
@@ -61,7 +62,7 @@ Note for **Windows**: It is easier to install this dependencies and run Readtera
 [![In development](https://img.shields.io/badge/status-in%20development-red.svg)](#todo)
 [![CLI repository](https://img.shields.io/badge/CLI-readteractive--generator-blue.svg)](https://github.com/Carleslc/readteractive-generator)
 
-We provide a _command line interface_ to easily generate your project doing **scaffolding**, so you don't need to remember the syntax of each file and you can just **focus on writing**.
+We provide a _command line interface_ to easily generate your project doing **scaffolding**, so you do not need to remember the syntax of each file and you can just **focus on writing**.
 
 It also provides a tool for **visualization** of your book with current chapters and the links between them, so you can have a general overview of the **narrative branches** of your book.
 
@@ -158,6 +159,27 @@ You can use [Markdown](#markdown) here using **`**bold**`** and _`_italic_`_.
 
 The text of your chapter. You can use [Markdown](#markdown) here.
 
+#### Chapters order
+
+It is true that a gamebook does not have a strict order for chapters because users can jump from one to another according to the options they decide to follow, but sometimes is more elegant to have chapters sorted by narrative branch or other order you decide.
+
+Once book is built, the first chapter shown will be the chapter specified in **`_meta.yml`** (if provided). The following chapters are shown in alphabetical order, so you can define your own order giving a prefix to chapter identifiers like in this example:
+
+```
+.
+├── book-example/
+│   └── _meta.yml
+│   └── 0_before/
+│       ├── 0_before.md
+│       └── 0_before.yml
+│   └── 1_after/
+│       ├── image.png
+│       ├── 1_after.md
+│       └── 1_after.yml
+```
+
+In this example, assuming that no `start` is set inside `_meta.yml`, the first chapter to show up will be `0_before`, followed by `1_after`.
+
 ### How to build your book
 
 If you have all dependencies installed is as easy as executing one command:
@@ -226,6 +248,14 @@ Replace `Text` with your custom option text. Replace `next` with the chapter id 
 Readteractive will generate a link to the chapter on your book for every reference following this syntax.
 
 You can use [Markdown](#markdown) in `Text`.
+
+You can skip the chapter prefix defined for [custom order](#chapter-order) at the moment of writing an option in `next`:
+
+```
+(Go to after -> [after])
+```
+
+This option has the same effect than `(Go to after -> [1_after])` and `(Go to after -> [1-after])`. This prefix skipping only works for digits followed by - or \_.
 
 ### Styling your book
 

@@ -9,5 +9,5 @@ You can use (Markdown -> [markdown]) here using **`**bold**`** and _`_italic_`_.
 
 The text of your chapter. You can use (Markdown -> [markdown]) here.
 
+- (What about chapters order? -> [chapter-order])
 - (How to build your book -> [build])
-- (Return back -> [getting-started])
