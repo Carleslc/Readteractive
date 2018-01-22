@@ -86,6 +86,7 @@ def generate(format):
             book.write(format_cover())
         for i, chapter in enumerate(BOOK.chapters):
             book.write(format_chapter(chapter, format, last=(i == len(BOOK.chapters) - 1)))
+        book.write('\\tableofcontents')
 
 if __name__ == "__main__":
     set_args()
