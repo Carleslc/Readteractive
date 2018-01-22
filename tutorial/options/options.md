@@ -8,5 +8,5 @@ Readteractive will generate a link to the chapter on your book for every referen
 
 You can use (Markdown -> [markdown]) in `Text`.
 
-(How to style your book -> [style])
-(Return back -> [getting-started])
+- (How to style your book -> [style])
+- (Return back -> [getting-started])
