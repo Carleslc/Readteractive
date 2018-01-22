@@ -21,10 +21,7 @@ Tool for writing and generating interactive books, also known as gamebooks.
     - [Styling your book](#styling-your-book)
         - [Markdown](#markdown)
         - [CSS](#css)
-            - [HTML](#html)
-            - [EPUB and MOBI \(e-book\)](#epub-and-mobi-e-book)
-        - [PDF Margin](#pdf-margin)
-        - [Page break and new lines](#page-break-and-new-lines)
+        - [PDF](#pdf)
         - [MathML](#mathml)
 - [TODO](#todo)
 
@@ -224,7 +221,7 @@ You can use [Markdown](#markdown) in `Text`.
 
 You can use [Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) syntax for styling your chapters. This README file is written entirely in Markdown.
 
-Markdown is simpler than HTML, but if you need to use it Markdown supports HTML tags.
+Markdown is simpler than HTML, but if you need to use it, Markdown supports HTML tags.
 
 The example chapter `start.md` provides very useful examples using Markdown.
 
@@ -235,25 +232,24 @@ Pandoc allows you to do a few more things besides. You can read more about that 
 
 #### CSS
 
-##### HTML
+If you know [CSS](https://en.wikipedia.org/wiki/Cascading_Style_Sheets) you can customize the style of the book even more than with markdown and HTML.
 
-Edit the file `pandoc-html.css` at the top folder.
+For custom CSS of the HTML version edit the file `pandoc-html.css` at the top folder.
 
-##### EPUB and MOBI (e-book)
-
-You can optionally specify a `stylesheet.css` for your e-book in the `_meta.yml` file to have custom styles such font family or size.
+With EPUB and MOBI (e-book versions) you can optionally specify a `stylesheet.css` for your e-book in the `_meta.yml` file to have custom styles such font family or size.
 
 If no stylesheet is provided then [this one](https://github.com/jgm/pandoc/blob/master/data/epub.css) is used by default.
 
 _This option is not available for PDF because LaTeX is used_
 
-#### PDF Margin
+#### PDF
+
+Although CSS is not available for PDF version you can change margins and page breaks.
 
 You can edit margin size in centimeters (`cm`) or inches (`in`) for PDF files in the variable `PDF_MARGIN` at the top of the `makefile`.
 
-#### Page break and new lines
-
-You can define an explicit page break using `\newpage` and explicit new line using `\newline` inside your chapter `.md` file. Unfortunately at the moment this only works for PDF version.
+You can define an explicit page break using `\newpage` and explicit new line using `\newline` inside your chapter `.md` file.
+Unfortunately at the moment this only works for PDF version.
 
 #### MathML
 
