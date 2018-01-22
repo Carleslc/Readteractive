@@ -41,7 +41,7 @@ markdown: configure
 	${PYTHON} process_book.py ${BOOK}
 
 html: markdown check_pandoc
-	${PANDOC} --resource-path=.:${DIR} -V lang=${LANGUAGE} ${DIR}/${BOOK}-html.md -o ${DIR}/${BOOK}.html --css pandoc-html.css --self-contained --mathml
+	${PANDOC} --resource-path=.:${DIR} -V lang=${LANGUAGE} ${DIR}/${BOOK}-html.md -o ${DIR}/${BOOK}.html --css pandoc-html.css --mathml --self-contained
 
 pdf: markdown check_pandoc
 	${PANDOC} --pdf-engine=xelatex --resource-path=${DIR} -V lang=${LANGUAGE} ${DIR}/${BOOK}-pdf.md -o ${DIR}/${BOOK}.pdf -V geometry:margin=${PDF_MARGIN}

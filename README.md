@@ -179,6 +179,16 @@ The HTML version is more dynamic. It only shows the chapters you have followed w
 
 The MOBI version is useful for Kindle devices.
 
+Furthermore, you can build only the desired format:
+
+```
+make html BOOK=book-example
+make pdf BOOK=book-example
+make epub BOOK=book-example
+make mobi BOOK=book-example
+make clean-md # clean intermediate files
+```
+
 Builded files are saved in your book folder:
 
 ```
