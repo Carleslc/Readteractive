@@ -1,6 +1,8 @@
 # Readteractive
 Tool for writing and generating interactive books, also known as gamebooks.
 
+[**Play this README as a gamebook!**](https://carleslc.me/Readteractive)
+
 ## Overview
 
 <!-- MarkdownTOC -->
