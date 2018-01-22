@@ -4,4 +4,10 @@ A [gamebook](https://en.wikipedia.org/wiki/Gamebook) is a work of printed fictio
 
 Production of new gamebooks in the West decreased dramatically during the nineties as choice based stories have moved away from print based media, although the format may be getting a new lease of life on mobile and ebook platforms. Such digital gamebooks are considered [interactive fiction](https://en.wikipedia.org/wiki/Interactive_fiction).
 
+This tutorial is built with Readteractive, so of course this is one interactive book.
+
+Ready to join the adventure of using Readteractive?
+
+Click the following option to continue!
+
 (Getting Started -> [getting-started])
