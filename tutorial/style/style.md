@@ -5,4 +5,4 @@ Choose an option:
 - (What about PDF style? -> [pdf])
 - (I like numbers and formulas -> [math])
 
-_(I am no longer interested in styling -> [getting-started])__
+(_I am no longer interested in styling_ -> [getting-started])
