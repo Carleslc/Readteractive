@@ -1,8 +1,10 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
-import argparse, os
+import argparse, os, re
 from book import Book
+
+FORMAT = None
 
 def set_args():
     global args
@@ -22,7 +24,7 @@ def new_page(file=None):
     return write_or_return('\\newpage\n', file)
 
 def format_property(key, value):
-    if value is None:
+    if not value:
         return ''
     value = str(value)
     if '\n' in value:
@@ -42,39 +44,56 @@ def front_matter(description_key):
 def format_cover():
     cover_string = ''
     if BOOK.cover:
-        cover_string += '![](%s)\n' % BOOK.cover
+        cover_string += '<figure>![](%s)</figure>\n' % BOOK.cover
     cover_string += new_page()
     cover_string += new_line()
     return cover_string
 
-def format_chapter(chapter, last=False):
-    chapter_string = '# %s\n\n' % chapter.title
+def format_description():
+    description = re.sub(r'[\t\n]', ' ', BOOK.description)
+    return '<p class="description">%s</p>\n' % description
+
+def format_chapter(chapter, format, last=False):
+    visibility = 'style="display: none"' if format == 'html' and BOOK.start != chapter.id else ''
+    chapter_string = '<div id="chapter_%s"%s>\n\n' % (chapter.id, visibility)
+    chapter_string += '# %s\n\n' % chapter.title
     chapter_string += chapter.text
     chapter_string += new_line()
     if not last:
         chapter_string += new_line()
         chapter_string += new_page()
         chapter_string += new_line()
+    chapter_string += '</div>\n'
     return chapter_string
 
-def generate(epub=False):
-    filename = BOOK.id + ('-epub' if epub else '') + '.md'
+def child_formatter(id, text, title):
+    return '(<span onclick="show_chapter(\'chapter_%s\')">[**%s**](#%s)</span>)' % (id, text, title)
+
+def generate(format):
+    filename = '%s-%s.md' % (BOOK.id, format)
     with BOOK.file(filename, 'w') as book:
         book.write('---\n')
-        book.write(front_matter('description' if epub else 'abstract'))
+        book.write(front_matter('abstract' if format == 'pdf' else 'description'))
         book.write('---\n')
+        if format == 'html':
+            book.write('<script type="text/javascript" src="show_chapter.js"/>\n')
+            chapters = ['"chapter_%s"' % chapter.id for chapter in BOOK.chapters]
+            book.write('<script type="text/javascript">chapters([%s])</script>\n' % ','.join(chapters))
         new_line(book)
-        if not epub: # epub already have cover image as metadata
+        if format != 'pdf':
+            book.write(format_description())
+        if format != 'epub': # epub already have cover image as metadata
             book.write(format_cover())
         for i, chapter in enumerate(BOOK.chapters):
-            book.write(format_chapter(chapter, last=(i == len(BOOK.chapters) - 1)))
+            book.write(format_chapter(chapter, format, last=(i == len(BOOK.chapters) - 1)))
 
 if __name__ == "__main__":
     set_args()
 
-    BOOK = Book(args.book)
+    BOOK = Book(args.book, child_formatter)
     
-    generate(epub=False)
-    generate(epub=True)
+    generate('html')
+    generate('pdf')
+    generate('epub')
 
     print(BOOK.get_links())

@@ -9,12 +9,12 @@ PYTHON = $(shell which python3 2>/dev/null)
 PANDOC = $(shell which pandoc 2>/dev/null)
 KINDLEGEN = $(shell which kindlegen 2>/dev/null)
 
-.PHONY: all clean clean-epub check_python check_pandoc check_kindlegen
+.PHONY: all clean clean-md check_python check_pandoc check_kindlegen
 
-all: clean markdown pdf epub mobi clean-epub
+all: clean markdown html pdf epub clean-md mobi
 
-clean-epub:
-	rm -f ${DIR}/${BOOK}-epub.md
+clean-md:
+	rm -f ${DIR}/${BOOK}*.md
 
 clean:
 	rm -f ${DIR}/${BOOK}*
@@ -29,7 +29,7 @@ configure: check_python
 	$(eval COVER := $(if ${COVER_IMAGE},--epub-cover-image=${DIR}/${COVER_IMAGE},))
 
 	$(eval STYLESHEET := $(shell ${PYTHON} get_property.py ${DIR}/_meta.yml 2>/dev/null))
-	$(eval STYLESHEET_OPTION := $(if ${STYLESHEET},--css=${STYLESHEET},))
+	$(eval STYLESHEET_OPTION := $(if ${STYLESHEET},--css ${STYLESHEET},))
 
 check_pandoc:
 	$(if ${PANDOC},,$(error "[WARNING] Pandoc dependency not found (command pandoc). Skipping PDF, EPUB and MOBI generation."))
@@ -40,11 +40,14 @@ check_kindlegen:
 markdown: configure
 	${PYTHON} process_book.py ${BOOK}
 
+html: markdown check_pandoc
+	${PANDOC} --resource-path=.:${DIR} -V lang=${LANGUAGE} ${DIR}/${BOOK}-html.md -o ${DIR}/${BOOK}.html --css pandoc-html.css --self-contained --mathml
+
 pdf: markdown check_pandoc
-	${PANDOC} --pdf-engine=xelatex --resource-path=${DIR} -V lang=${LANGUAGE} ${DIR}/${BOOK}.md -o ${DIR}/${BOOK}.pdf -V geometry:margin=${PDF_MARGIN} --mathml
+	${PANDOC} --pdf-engine=xelatex --resource-path=${DIR} -V lang=${LANGUAGE} ${DIR}/${BOOK}-pdf.md -o ${DIR}/${BOOK}.pdf -V geometry:margin=${PDF_MARGIN}
 
 epub: markdown check_pandoc
-	${PANDOC} --pdf-engine=xelatex --resource-path=${DIR} -V lang=${LANGUAGE} ${DIR}/${BOOK}-epub.md -o ${DIR}/${BOOK}.epub ${COVER} ${STYLESHEET_OPTION} --mathml 
+	${PANDOC} --pdf-engine=xelatex --resource-path=${DIR} -V lang=${LANGUAGE} ${DIR}/${BOOK}-epub.md -o ${DIR}/${BOOK}.epub ${COVER} ${STYLESHEET_OPTION}
 
 mobi: epub check_kindlegen
 	${KINDLEGEN} -locale ${LANGUAGE} ${DIR}/${BOOK}.epub

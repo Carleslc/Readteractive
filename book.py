@@ -4,17 +4,18 @@ class Book:
 
     METADATA_FILE = '_meta.yml'
 
-    def __init__(self, id):
+    def __init__(self, id, child_formatter):
         self.id = id
+        self.child_formatter = child_formatter
         metadata_file = self.file(Book.METADATA_FILE)
         metadata = yaml.load(metadata_file)
         metadata_file.close()
         self.title = property(metadata, 'title')
         self.author = property(metadata, 'author', optional=True)
         self.language = property(metadata, 'language', optional=True, default='en')
-        self.description = property(metadata, 'description', optional=True)
+        self.description = property(metadata, 'description', optional=True, default='')
         self.cover = property(metadata, 'cover-image', optional=True)
-        self.__start = property(metadata, 'start', optional=True)
+        self.start = property(metadata, 'start', optional=True)
         self.__load_chapters()
         #self.__check_links()
 
@@ -25,12 +26,14 @@ class Book:
         for chapter in self.__chapters.values():
             chapter.parse_children() # may require other chapters, so it need to be after filling chapters dict
         # Public list of chapters sorted by id
-        not_start = sorted(filter(lambda id: id != self.__start, self.__chapters.keys()))
+        not_start = sorted(filter(lambda id: id != self.start, self.__chapters.keys()))
         self.chapters = [self.get_chapter(id) for id in not_start]
-        if self.__start is None:
-            self.__start = self.chapters[0]
+        if self.start is None:
+            self.start = self.chapters[0]
         else:
-            self.chapters = [self.get_chapter(self.__start)] + self.chapters
+            self.chapters = [self.get_chapter(self.start)] + self.chapters
+        if len(self.chapters) == 0:
+            error('Cannot build a book without any chapter! Ensure you have at least one chapter and it follows the structure defined in README.md')
 
     def __check_links(self):
         error('TODO')

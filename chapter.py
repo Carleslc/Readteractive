@@ -7,7 +7,6 @@ from os.path import join, isdir, abspath
 class Chapter:
 
     NEXT_REGEX = re.compile(r'\(\s*(.*?)\s*->\s*\[\s*(.*?)\s*\]\s*\)',re.S|re.M)
-    CHILD_FORMATTER = '([**%s**](#%s))'
 
     def __init__(self, book, id):
         self.book = book
@@ -24,7 +23,8 @@ class Chapter:
             if not self.book.exists_chapter(next_id):
                 error('Broken link. Chapter "%s" not found (required in %s.md at ":%s -> %s:")' % (next_id, self.id, next_id, next_text))
             self.children.add(next_id)
-            return Chapter.CHILD_FORMATTER % (next_text, self.__header_markdown_reference(self.book.get_chapter(next_id).title))
+            chapter = self.book.get_chapter(next_id)
+            return self.book.child_formatter(chapter.id, next_text, self.__header_markdown_reference(chapter.title))
         self.children = set()
         self.text = re.sub(Chapter.NEXT_REGEX, next_replacement, self.text)
 

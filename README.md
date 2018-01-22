@@ -10,7 +10,6 @@ Tool for writing and generating interactive books, also known as gamebooks.
     - [Install dependencies](#install-dependencies)
     - [CLI](#cli)
         - [Features](#features)
-        - [Dependencies](#dependencies)
     - [Readteractive structure](#readteractive-structure)
         - [Top folder](#top-folder)
         - [Books and chapters folders](#books-and-chapters-folders)
@@ -19,12 +18,14 @@ Tool for writing and generating interactive books, also known as gamebooks.
     - [How to build your book](#how-to-build-your-book)
     - [How to write your book](#how-to-write-your-book)
         - [How to write options](#how-to-write-options)
-        - [Styling your book](#styling-your-book)
-            - [Markdown](#markdown)
-            - [CSS](#css)
-            - [PDF Margin](#pdf-margin)
-            - [Page break and new lines](#page-break-and-new-lines)
-            - [MathML](#mathml)
+    - [Styling your book](#styling-your-book)
+        - [Markdown](#markdown)
+        - [CSS](#css)
+            - [HTML](#html)
+            - [EPUB and MOBI \(e-book\)](#epub-and-mobi-e-book)
+        - [PDF Margin](#pdf-margin)
+        - [Page break and new lines](#page-break-and-new-lines)
+        - [MathML](#mathml)
 - [TODO](#todo)
 
 <!-- /MarkdownTOC -->
@@ -73,12 +74,6 @@ It also provides a tool for **visualization** of your book with current chapters
 - Chapter scaffolding
 - Book graph visualization
 
-#### Dependencies
-
-- [Yeoman](http://yeoman.io/learning/index.html): Needed to install readteractive-generator
-    - [Npm](https://www.npmjs.com/get-npm): Needed to install Yeoman
-        - [Node](https://nodejs.org/en/): Provides Npm
-
 ### Readteractive structure
 
 #### Top folder
@@ -93,6 +88,7 @@ In the top folder there are the required files for building your books and confi
 ├── chapter.py
 ├── get_property.py
 ├── process_book.py
+├── pandoc-html.css
 ├── makefile
 ├── LICENSE
 ├── README.md
@@ -171,17 +167,25 @@ make BOOK=your-book
 
 This will ensure your book and chapters structure is right, check for broken links between chapters and then pack and build your book in different formats:
 
-- Markdown single-file
-- PDF (LaTeX)
+- HTML
+- PDF
 - EPUB
-- MOBI for Kindle
+- MOBI
+
+The PDF version use [LaTeX](https://en.wikipedia.org/wiki/LaTeX) to get a high-quality typography.
+
+Each chapter will generate a header in the table of contents of the PDF, EPUB and MOBI metadata, and each option will have a clickable link that jumps to the next chapter page.
+
+The HTML version is more dynamic. It only shows the chapters you have followed with a click on a link so story proceeds more interactively over the book. It also works offline (is self-contained).
+
+The MOBI version is useful for Kindle devices.
 
 Builded files are saved in your book folder:
 
 ```
 .
 ├── book-example/
-│   └── book-example.md
+│   └── book-example.html
 │   └── book-example.pdf
 │   └── book-example.epub
 │   └── book-example.mobi
@@ -212,9 +216,9 @@ Readteractive will generate a link to the chapter on your book for every referen
 
 You can use [Markdown](#markdown) in `Text`.
 
-#### Styling your book
+### Styling your book
 
-##### Markdown
+#### Markdown
 
 You can use [Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) syntax for styling your chapters. This README file is written entirely in Markdown.
 
@@ -224,29 +228,34 @@ The example chapter `start.md` provides very useful examples using Markdown.
 
 In order to improve your writting even more you can use a Markdown highlight editor. There are many Markdown editors, some are online like [this](https://stackedit.io/) or [this](https://jbt.github.io/markdown-editor/), and other are desktop applications like [Typeora](https://typora.io/). Code editors like [Atom](https://atom.io/) or [Sublime Text](https://www.sublimetext.com/) have markdown plugins too ([Atom package](https://github.com/atom/markdown-preview), [Sublime Text 3 package](https://github.com/SublimeText-Markdown/MarkdownEditing)).
 
-When you build your book, Readteractive will make a PDF version using [Pandoc](https://pandoc.org/installing.html) that converts this Markdown to [LaTeX](https://en.wikipedia.org/wiki/LaTeX). Each chapter will generate a header in the table of contents of this PDF, and each option will have a clickable link that jumps to the next chapter page.
+When you build your book, Readteractive will make HTML, PDF and EPUB versions using [Pandoc](https://pandoc.org/installing.html).
+Pandoc allows you to do a few more things besides. You can read more about that in the [Pandoc Manual](http://pandoc.org/MANUAL.html).
 
-Pandoc also allows you to do a few more things besides. You can read more about that in the [Pandoc Manual](http://pandoc.org/MANUAL.html).
+#### CSS
 
-##### CSS
+_This option is not available for PDF because LaTeX is used_
 
-_This is only available for EPUB and MOBI formats (e-book)._
+##### HTML
 
-You can optionally specify a `stylesheet.css` file for your e-book in the `_meta.yml` file to have custom styles such font family or size.
+Edit the file `pandoc-html.css` at the top folder.
+
+##### EPUB and MOBI (e-book)
+
+You can optionally specify a `stylesheet.css` for your e-book in the `_meta.yml` file to have custom styles such font family or size.
 
 If no stylesheet is provided then [this one](https://github.com/jgm/pandoc/blob/master/data/epub.css) is used by default.
 
-##### PDF Margin
+#### PDF Margin
 
 You can edit margin size in centimeters (`cm`) or inches (`in`) for PDF files in the variable `PDF_MARGIN` at the top of the `makefile`.
 
-##### Page break and new lines
+#### Page break and new lines
 
 You can define an explicit page break using `\newpage` and explicit new line using `\newline` inside your chapter `.md` file.
 
-##### MathML
+#### MathML
 
-Math equations are rendered using MathML, supported for PDF but only for some EPUB3 readers and currently gives unrecognised tags on _KindleGen_ converting to MOBI.
+Math equations are rendered using MathML, supported for HTML and PDF but only for some EPUB3 readers and currently gives unrecognised tags on _KindleGen_ converting to MOBI.
 
 ## TODO
 
@@ -255,8 +264,6 @@ Math equations are rendered using MathML, supported for PDF but only for some EP
 - Human-readable errors (FileNotFoundError, YAML syntax).
 
 - Check links.
-
-- Simpler footnotes without HTMl.
 
 - Yeoman CLI (new book, new chapter, visualize graph links)
 
