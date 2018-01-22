@@ -269,9 +269,13 @@ Math equations are rendered using MathML, supported for HTML and PDF but only fo
 
 ## TODO
 
-- History -> Story
+- * History -> Story
 
-- Full CLI on tutorial
+- * Full CLI on tutorial + Yeoman Sticker
+
+- * View on GitHub Label
+
+- TOC last page
 
 - Add argument to hide others or keep scroll in HTML.
 
@@ -279,12 +283,12 @@ Math equations are rendered using MathML, supported for HTML and PDF but only fo
 
 - Human-readable errors (FileNotFoundError, YAML syntax).
 
-- Anchor hyperlinks with target=\_blank
+- Anchor hyperlinks with target=_blank
 
-- Fix PDF generation for Tutorial book.
+- * Fix PDF generation for Tutorial book.
 
 - Check links.
 
-- Yeoman CLI (new book, new chapter, visualize graph links, rename chapter id)
+- * Yeoman CLI (new book, new chapter, visualize graph links, rename chapter id)
 
-- Additional README in Spanish.
+- Additional Readme and Tutorial in Spanish.
