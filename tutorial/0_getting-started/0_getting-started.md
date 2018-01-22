@@ -14,6 +14,10 @@ Note for **Windows**: It is easier to install this dependencies and run Readtera
 - _(HTML, PDF, EPUB)_ [**Pandoc**](https://pandoc.org/installing.html): Needed to generate HTML, PDF and EPUB from Markdown files.
 - _(MOBI)_ [**KindleGen**](https://www.amazon.com/gp/feature.html?docId=1000765211): Needed to generate MOBI for Kindle from EPUB file.
 - _(Optional)_ [Kindle Previewer](https://www.amazon.com/gp/feature.html?ie=UTF8&docId=1000765261): Needed to preview how your MOBI files looks in tablet and Kindle devices.
+- _(Optional)_ **librsvg**: Convert SVG images for being used inside PDF
+    - Linux: `apt-get install librsvg2-bin`
+    - Mac OS, using [Homebrew](https://brew.sh): `brew install librsvg`
+    - Windows: Install _librsvg2_ from Cygwin installer.
 
 Choose an option:
 

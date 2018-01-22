@@ -1,7 +1,7 @@
 [**Install CLI and boost your productivity with Readteractive!**](https://github.com/Carleslc/readteractive-generator)
 
-![In development](https://img.shields.io/badge/status-in%20development-red.svg)
-[![CLI repository](https://img.shields.io/badge/CLI-readteractive--generator-blue.svg)](https://github.com/Carleslc/readteractive-generator)
+![In development](https://i.imgur.com/ef60VDz.png)
+[![CLI repository](https://i.imgur.com/lMhTTJJ.png)](https://github.com/Carleslc/readteractive-generator)
 
 A [yeoman](http://yeoman.io/learning/index.html) generator for scaffolding [Readteractive](https://github.com/Carleslc/Readteractive) books.
 

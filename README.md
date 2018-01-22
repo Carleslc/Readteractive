@@ -48,7 +48,7 @@ Note for **Windows**: It is easier to install this dependencies and run Readtera
 
 - [**Python 3**](https://www.python.org/downloads/): Needed to process structure and build Markdown files used to generate your book.
 - **Make**: Needed to bundle commands and generate your books in any format.
-    - Linux: `sudo apt-get install build-essential`
+    - Linux: `apt-get install build-essential`
     - Mac OS:
         - (Xcode Utils) `xcode-select --install`
         - Or, using [Homebrew](https://brew.sh): `brew install make`
@@ -56,11 +56,15 @@ Note for **Windows**: It is easier to install this dependencies and run Readtera
 - _(HTML, PDF, EPUB)_ [**Pandoc**](https://pandoc.org/installing.html): Needed to generate HTML, PDF and EPUB from Markdown files.
 - _(MOBI)_ [**KindleGen**](https://www.amazon.com/gp/feature.html?docId=1000765211): Needed to generate MOBI for Kindle from EPUB file.
 - _(Optional)_ [Kindle Previewer](https://www.amazon.com/gp/feature.html?ie=UTF8&docId=1000765261): Needed to preview how your MOBI files looks in tablet and Kindle devices.
+- _(Optional)_ **librsvg**: Convert SVG images for being used inside PDF
+    - Linux: `apt-get install librsvg2-bin`
+    - Mac OS, using [Homebrew](https://brew.sh): `brew install librsvg`
+    - Windows: Install _librsvg2_ from Cygwin installer.
 
 ### CLI
 
-[![In development](https://img.shields.io/badge/status-in%20development-red.svg)](#todo)
-[![CLI repository](https://img.shields.io/badge/CLI-readteractive--generator-blue.svg)](https://github.com/Carleslc/readteractive-generator)
+[![In development](https://i.imgur.com/ef60VDz.png)](#todo)
+[![CLI repository](https://i.imgur.com/lMhTTJJ.png)](https://github.com/Carleslc/readteractive-generator)
 
 We provide a _command line interface_ to easily generate your project doing **scaffolding**, so you do not need to remember the syntax of each file and you can just **focus on writing**.
 
