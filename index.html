@@ -423,15 +423,38 @@ make clean-md BOOK=book-example # clean intermediate files</code></pre>
 </div>
 <div id="chapter_cli" style="display: none">
 <h1 id="scaffolding">Scaffolding</h1>
-<p><a href="#todo"><img src="data:image/svg+xml;charset=utf-8;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMTM4IiBoZWlnaHQ9IjIwIj48bGluZWFyR3JhZGllbnQgaWQ9ImIiIHgyPSIwIiB5Mj0iMTAwJSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjYmJiIiBzdG9wLW9wYWNpdHk9Ii4xIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLW9wYWNpdHk9Ii4xIi8+PC9saW5lYXJHcmFkaWVudD48Y2xpcFBhdGggaWQ9ImEiPjxyZWN0IHdpZHRoPSIxMzgiIGhlaWdodD0iMjAiIHJ4PSIzIiBmaWxsPSIjZmZmIi8+PC9jbGlwUGF0aD48ZyBjbGlwLXBhdGg9InVybCgjYSkiPjxwYXRoIGZpbGw9IiM1NTUiIGQ9Ik0wIDBoNDN2MjBIMHoiLz48cGF0aCBmaWxsPSIjZTA1ZDQ0IiBkPSJNNDMgMGg5NXYyMEg0M3oiLz48cGF0aCBmaWxsPSJ1cmwoI2IpIiBkPSJNMCAwaDEzOHYyMEgweiIvPjwvZz48ZyBmaWxsPSIjZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iRGVqYVZ1IFNhbnMsVmVyZGFuYSxHZW5ldmEsc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMTAiPjx0ZXh0IHg9IjIyNSIgeT0iMTUwIiBmaWxsPSIjMDEwMTAxIiBmaWxsLW9wYWNpdHk9Ii4zIiB0cmFuc2Zvcm09InNjYWxlKC4xKSIgdGV4dExlbmd0aD0iMzMwIj5zdGF0dXM8L3RleHQ+PHRleHQgeD0iMjI1IiB5PSIxNDAiIHRyYW5zZm9ybT0ic2NhbGUoLjEpIiB0ZXh0TGVuZ3RoPSIzMzAiPnN0YXR1czwvdGV4dD48dGV4dCB4PSI4OTUiIHk9IjE1MCIgZmlsbD0iIzAxMDEwMSIgZmlsbC1vcGFjaXR5PSIuMyIgdHJhbnNmb3JtPSJzY2FsZSguMSkiIHRleHRMZW5ndGg9Ijg1MCI+aW4gZGV2ZWxvcG1lbnQ8L3RleHQ+PHRleHQgeD0iODk1IiB5PSIxNDAiIHRyYW5zZm9ybT0ic2NhbGUoLjEpIiB0ZXh0TGVuZ3RoPSI4NTAiPmluIGRldmVsb3BtZW50PC90ZXh0PjwvZz4gPC9zdmc+" alt="In development" /></a> <a href="https://github.com/Carleslc/readteractive-generator"><img src="data:image/svg+xml;charset=utf-8;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMTcwIiBoZWlnaHQ9IjIwIj48bGluZWFyR3JhZGllbnQgaWQ9ImIiIHgyPSIwIiB5Mj0iMTAwJSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjYmJiIiBzdG9wLW9wYWNpdHk9Ii4xIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLW9wYWNpdHk9Ii4xIi8+PC9saW5lYXJHcmFkaWVudD48Y2xpcFBhdGggaWQ9ImEiPjxyZWN0IHdpZHRoPSIxNzAiIGhlaWdodD0iMjAiIHJ4PSIzIiBmaWxsPSIjZmZmIi8+PC9jbGlwUGF0aD48ZyBjbGlwLXBhdGg9InVybCgjYSkiPjxwYXRoIGZpbGw9IiM1NTUiIGQ9Ik0wIDBoMjl2MjBIMHoiLz48cGF0aCBmaWxsPSIjMDA3ZWM2IiBkPSJNMjkgMGgxNDF2MjBIMjl6Ii8+PHBhdGggZmlsbD0idXJsKCNiKSIgZD0iTTAgMGgxNzB2MjBIMHoiLz48L2c+PGcgZmlsbD0iI2ZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkRlamFWdSBTYW5zLFZlcmRhbmEsR2VuZXZhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTEwIj48dGV4dCB4PSIxNTUiIHk9IjE1MCIgZmlsbD0iIzAxMDEwMSIgZmlsbC1vcGFjaXR5PSIuMyIgdHJhbnNmb3JtPSJzY2FsZSguMSkiIHRleHRMZW5ndGg9IjE5MCI+Q0xJPC90ZXh0Pjx0ZXh0IHg9IjE1NSIgeT0iMTQwIiB0cmFuc2Zvcm09InNjYWxlKC4xKSIgdGV4dExlbmd0aD0iMTkwIj5DTEk8L3RleHQ+PHRleHQgeD0iOTg1IiB5PSIxNTAiIGZpbGw9IiMwMTAxMDEiIGZpbGwtb3BhY2l0eT0iLjMiIHRyYW5zZm9ybT0ic2NhbGUoLjEpIiB0ZXh0TGVuZ3RoPSIxMzEwIj5yZWFkdGVyYWN0aXZlLWdlbmVyYXRvcjwvdGV4dD48dGV4dCB4PSI5ODUiIHk9IjE0MCIgdHJhbnNmb3JtPSJzY2FsZSguMSkiIHRleHRMZW5ndGg9IjEzMTAiPnJlYWR0ZXJhY3RpdmUtZ2VuZXJhdG9yPC90ZXh0PjwvZz4gPC9zdmc+" alt="CLI repository" /></a></p>
-<p>We provide a <em>command line interface</em> to easily generate your project doing <strong>scaffolding</strong>, so you don’t need to remember the syntax of each file and you can just <strong>focus on writing</strong>.</p>
-<p>It also provides a tool for <strong>visualization</strong> of your book with current chapters and the links between them, so you can have a general overview of the <strong>narrative branches</strong> of your book.</p>
 <p><a href="https://github.com/Carleslc/readteractive-generator"><strong>Install CLI and boost your productivity with Readteractive!</strong></a></p>
-<h4 id="features">Features</h4>
+<p><img src="data:image/svg+xml;charset=utf-8;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMTM4IiBoZWlnaHQ9IjIwIj48bGluZWFyR3JhZGllbnQgaWQ9ImIiIHgyPSIwIiB5Mj0iMTAwJSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjYmJiIiBzdG9wLW9wYWNpdHk9Ii4xIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLW9wYWNpdHk9Ii4xIi8+PC9saW5lYXJHcmFkaWVudD48Y2xpcFBhdGggaWQ9ImEiPjxyZWN0IHdpZHRoPSIxMzgiIGhlaWdodD0iMjAiIHJ4PSIzIiBmaWxsPSIjZmZmIi8+PC9jbGlwUGF0aD48ZyBjbGlwLXBhdGg9InVybCgjYSkiPjxwYXRoIGZpbGw9IiM1NTUiIGQ9Ik0wIDBoNDN2MjBIMHoiLz48cGF0aCBmaWxsPSIjZTA1ZDQ0IiBkPSJNNDMgMGg5NXYyMEg0M3oiLz48cGF0aCBmaWxsPSJ1cmwoI2IpIiBkPSJNMCAwaDEzOHYyMEgweiIvPjwvZz48ZyBmaWxsPSIjZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iRGVqYVZ1IFNhbnMsVmVyZGFuYSxHZW5ldmEsc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMTAiPjx0ZXh0IHg9IjIyNSIgeT0iMTUwIiBmaWxsPSIjMDEwMTAxIiBmaWxsLW9wYWNpdHk9Ii4zIiB0cmFuc2Zvcm09InNjYWxlKC4xKSIgdGV4dExlbmd0aD0iMzMwIj5zdGF0dXM8L3RleHQ+PHRleHQgeD0iMjI1IiB5PSIxNDAiIHRyYW5zZm9ybT0ic2NhbGUoLjEpIiB0ZXh0TGVuZ3RoPSIzMzAiPnN0YXR1czwvdGV4dD48dGV4dCB4PSI4OTUiIHk9IjE1MCIgZmlsbD0iIzAxMDEwMSIgZmlsbC1vcGFjaXR5PSIuMyIgdHJhbnNmb3JtPSJzY2FsZSguMSkiIHRleHRMZW5ndGg9Ijg1MCI+aW4gZGV2ZWxvcG1lbnQ8L3RleHQ+PHRleHQgeD0iODk1IiB5PSIxNDAiIHRyYW5zZm9ybT0ic2NhbGUoLjEpIiB0ZXh0TGVuZ3RoPSI4NTAiPmluIGRldmVsb3BtZW50PC90ZXh0PjwvZz4gPC9zdmc+" alt="In development" /> <a href="https://github.com/Carleslc/readteractive-generator"><img src="data:image/svg+xml;charset=utf-8;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMTcwIiBoZWlnaHQ9IjIwIj48bGluZWFyR3JhZGllbnQgaWQ9ImIiIHgyPSIwIiB5Mj0iMTAwJSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjYmJiIiBzdG9wLW9wYWNpdHk9Ii4xIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLW9wYWNpdHk9Ii4xIi8+PC9saW5lYXJHcmFkaWVudD48Y2xpcFBhdGggaWQ9ImEiPjxyZWN0IHdpZHRoPSIxNzAiIGhlaWdodD0iMjAiIHJ4PSIzIiBmaWxsPSIjZmZmIi8+PC9jbGlwUGF0aD48ZyBjbGlwLXBhdGg9InVybCgjYSkiPjxwYXRoIGZpbGw9IiM1NTUiIGQ9Ik0wIDBoMjl2MjBIMHoiLz48cGF0aCBmaWxsPSIjMDA3ZWM2IiBkPSJNMjkgMGgxNDF2MjBIMjl6Ii8+PHBhdGggZmlsbD0idXJsKCNiKSIgZD0iTTAgMGgxNzB2MjBIMHoiLz48L2c+PGcgZmlsbD0iI2ZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkRlamFWdSBTYW5zLFZlcmRhbmEsR2VuZXZhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTEwIj48dGV4dCB4PSIxNTUiIHk9IjE1MCIgZmlsbD0iIzAxMDEwMSIgZmlsbC1vcGFjaXR5PSIuMyIgdHJhbnNmb3JtPSJzY2FsZSguMSkiIHRleHRMZW5ndGg9IjE5MCI+Q0xJPC90ZXh0Pjx0ZXh0IHg9IjE1NSIgeT0iMTQwIiB0cmFuc2Zvcm09InNjYWxlKC4xKSIgdGV4dExlbmd0aD0iMTkwIj5DTEk8L3RleHQ+PHRleHQgeD0iOTg1IiB5PSIxNTAiIGZpbGw9IiMwMTAxMDEiIGZpbGwtb3BhY2l0eT0iLjMiIHRyYW5zZm9ybT0ic2NhbGUoLjEpIiB0ZXh0TGVuZ3RoPSIxMzEwIj5yZWFkdGVyYWN0aXZlLWdlbmVyYXRvcjwvdGV4dD48dGV4dCB4PSI5ODUiIHk9IjE0MCIgdHJhbnNmb3JtPSJzY2FsZSguMSkiIHRleHRMZW5ndGg9IjEzMTAiPnJlYWR0ZXJhY3RpdmUtZ2VuZXJhdG9yPC90ZXh0PjwvZz4gPC9zdmc+" alt="CLI repository" /></a></p>
+<p>A <a href="http://yeoman.io/learning/index.html">yeoman</a> generator for scaffolding <a href="https://github.com/Carleslc/Readteractive">Readteractive</a> books.</p>
+<p>We provide a <em>command line interface</em> to easily generate your project doing <strong>scaffolding</strong>, so you don’t need to remember the syntax of each file and you can just <strong>focus on writing</strong>.</p>
+<p>The <a href="https://github.com/Carleslc/Readteractive#readteractive-structure">Readteractive structure</a> and files can be automatically generated using this CLI for your custom book.</p>
+<p>It also provides a tool for <strong>visualization</strong> of your book with current chapters and the links between them, so you can have a general overview of the <strong>narrative branches</strong> of your book.</p>
+<h3 id="features">Features</h3>
 <ul>
 <li>Book scaffolding</li>
 <li>Chapter scaffolding</li>
 <li>Book graph visualization</li>
+</ul>
+<h3 id="install-dependencies">Install dependencies</h3>
+<ul>
+<li><a href="http://yeoman.io/learning/index.html">Yeoman</a>: Needed to install readteractive-generator
+<ul>
+<li><a href="https://www.npmjs.com/get-npm">Npm</a>: Needed to install Yeoman
+<ul>
+<li><a href="https://nodejs.org/en/">Node</a>: Provides Npm</li>
+</ul></li>
+</ul></li>
+</ul>
+<h3 id="how-to-use">How to use</h3>
+<ul>
+<li>Install Readteractive Generator: <code>npm install -g readteractive-generator</code></li>
+<li>Run: <code>yo readteractive</code></li>
+</ul>
+<h4 id="commands">Commands</h4>
+<ul>
+<li><code>yo readteractive</code> shows a wizard for generate a new book.</li>
+<li><code>yo readteractive:chapter</code> shows a wizard for generate a new chapter.</li>
+<li><code>yo readteractive:graph</code> shows a graph of your book with current chapters and the links between them.</li>
 </ul>
 <p>Choose an option:</p>
 <ul>
@@ -451,7 +474,7 @@ make clean-md BOOK=book-example # clean intermediate files</code></pre>
 <div id="chapter_getting-started" style="display: none">
 <h1 id="getting-started">Getting Started</h1>
 <p>Clone this repository with <a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">git</a> or download the current version as <a href="https://github.com/Carleslc/Readteractive/releases">zip</a>.</p>
-<h2 id="install-dependencies">Install dependencies</h2>
+<h2 id="install-dependencies-1">Install dependencies</h2>
 <p>Note for <strong>Windows</strong>: It is easier to install this dependencies and run Readteractive with a linux-like shell like <a href="https://www.cygwin.com/install.html">Cygwin</a>.</p>
 <ul>
 <li><a href="https://www.python.org/downloads/"><strong>Python 3</strong></a>: Needed to process structure and build Markdown files used to generate your book.</li>
@@ -544,7 +567,7 @@ make clean-md BOOK=book-example # clean intermediate files</code></pre>
 <h1 id="some-tips-for-new-interactive-writers">Some tips for new interactive writers</h1>
 <p>If you have no previous experience writing gamebooks these are some <em>tips</em>:</p>
 <ol type="1">
-<li>Plan your history. You can make a mind map with each of your narrative branches and which options follow which branch.</li>
+<li>Plan your story. You can make a mind map with each of your narrative branches and which options follow which branch.</li>
 <li>Define each chapter and write them with Readteractive.</li>
 <li>Visualize your chapter graph with our (<span onclick="show_chapter('chapter_cli')"><a href="#scaffolding"><strong>CLI</strong></a></span>) whenever you need to have an overview of your book and ensure each chapter have the links you want.</li>
 <li>(<span onclick="show_chapter('chapter_build')"><a href="#how-to-build-your-book"><strong>Build</strong></a></span>) your book from time to time to have a look of how it is looking.</li>
