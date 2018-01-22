@@ -269,8 +269,6 @@ Math equations are rendered using MathML, supported for HTML and PDF but only fo
 
 ## TODO
 
-- * Full CLI on tutorial + Yeoman Sticker
-
 - * View on GitHub Label
 
 - TOC last page
