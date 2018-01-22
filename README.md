@@ -153,6 +153,8 @@ description: |
 title: Example _chapter_
 ```
 
+You can use [Markdown](#markdown) here using **`**bold**`** and _`_italic_`_.
+
 **`chapter-id.md`**
 
 The text of your chapter. You can use [Markdown](#markdown) here.
@@ -162,7 +164,7 @@ The text of your chapter. You can use [Markdown](#markdown) here.
 If you have all dependencies installed is as easy as executing one command:
 
 ```
-make BOOK=your-book
+make BOOK=book-example
 ```
 
 This will ensure your book and chapters structure is right, check for broken links between chapters and then pack and build your book in different formats:
@@ -233,8 +235,6 @@ Pandoc allows you to do a few more things besides. You can read more about that 
 
 #### CSS
 
-_This option is not available for PDF because LaTeX is used_
-
 ##### HTML
 
 Edit the file `pandoc-html.css` at the top folder.
@@ -245,13 +245,15 @@ You can optionally specify a `stylesheet.css` for your e-book in the `_meta.yml`
 
 If no stylesheet is provided then [this one](https://github.com/jgm/pandoc/blob/master/data/epub.css) is used by default.
 
+_This option is not available for PDF because LaTeX is used_
+
 #### PDF Margin
 
 You can edit margin size in centimeters (`cm`) or inches (`in`) for PDF files in the variable `PDF_MARGIN` at the top of the `makefile`.
 
 #### Page break and new lines
 
-You can define an explicit page break using `\newpage` and explicit new line using `\newline` inside your chapter `.md` file.
+You can define an explicit page break using `\newpage` and explicit new line using `\newline` inside your chapter `.md` file. Unfortunately at the moment this only works for PDF version.
 
 #### MathML
 
