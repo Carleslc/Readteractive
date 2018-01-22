@@ -63,8 +63,8 @@ Note for **Windows**: It is easier to install this dependencies and run Readtera
 
 ### CLI
 
-[![In development](https://i.imgur.com/ef60VDz.png)](#todo)
-[![CLI repository](https://i.imgur.com/lMhTTJJ.png)](https://github.com/Carleslc/readteractive-generator)
+[![In development](https://img.shields.io/badge/status-in%20development-red.svg)](#todo)
+[![CLI repository](https://img.shields.io/badge/CLI-readteractive--generator-blue.svg)](https://github.com/Carleslc/readteractive-generator)
 
 We provide a _command line interface_ to easily generate your project doing **scaffolding**, so you do not need to remember the syntax of each file and you can just **focus on writing**.
 
