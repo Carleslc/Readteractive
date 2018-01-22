@@ -189,7 +189,7 @@ make mobi BOOK=book-example
 make clean-md # clean intermediate files
 ```
 
-Builded files are saved in your book folder:
+Built files are saved in your book folder:
 
 ```
 .
