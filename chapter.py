@@ -24,7 +24,7 @@ class Chapter:
             (next_text, next_id) = match.groups()
             id_no_prefix = Chapter.format_id(next_id)
             if not self.book.exists_chapter(id_no_prefix):
-                error('Broken link. Chapter "%s" not found (required in %s.md at ":%s -> %s:")' % (next_id, self.id, next_id, next_text))
+                error('Broken link. Chapter "%s" not found and required in %s at "(%s -> [%s])"' % (next_id, self.id, next_text, next_id))
             self.children.add(id_no_prefix)
             chapter = self.book.get_chapter(id_no_prefix)
             return self.book.child_formatter(chapter.id, next_text, self.__header_markdown_reference(chapter.title))

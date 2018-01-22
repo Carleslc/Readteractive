@@ -15,19 +15,21 @@ class Book:
         self.language = property(metadata, 'language', optional=True, default='en')
         self.description = property(metadata, 'description', optional=True, default='')
         self.cover = property(metadata, 'cover-image', optional=True)
-        self.start = property(metadata, 'start', optional=True)
+        self.start = Chapter.format_id(property(metadata, 'start', optional=True))
         self.__load_chapters()
         #self.__check_links()
 
     def __load_chapters(self):
+        self.__full_ids = []
         self.__chapters = dict() # mapping id to chapter
         for full_id in list(filter(lambda file: isdir(join(self.id, file)), listdir(self.id))):
             chapter = Chapter(self, full_id)
+            self.__full_ids.append(full_id)
             self.__chapters[chapter.id] = chapter
         for chapter in self.__chapters.values():
             chapter.parse_children() # may require other chapters, so it need to be after filling chapters dict
         # Public list of chapters sorted by id
-        not_start = sorted(filter(lambda id: id != self.start, self.__chapters.keys()))
+        not_start = sorted(filter(lambda id: Chapter.format_id(id) != self.start, self.__full_ids))
         self.chapters = [self.get_chapter(id) for id in not_start]
         if self.start is None:
             self.start = self.chapters[0]
