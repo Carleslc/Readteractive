@@ -269,6 +269,10 @@ Math equations are rendered using MathML, supported for HTML and PDF but only fo
 
 ## TODO
 
+- History -> Story
+
+- Full CLI on tutorial
+
 - Add argument to hide others or keep scroll in HTML.
 
 - Add page number argument for each link (printed gamebooks).
