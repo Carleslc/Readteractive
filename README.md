@@ -299,13 +299,9 @@ Math equations are rendered using MathML, supported for HTML and PDF but only fo
 
 ## TODO
 
-- * View on GitHub Label
-
-- TOC last page
-
 - Add argument to hide others or keep scroll in HTML.
 
-- Add page number argument for each link (printed gamebooks).
+- Add page number argument for each link (_printed gamebooks_).
 
 - Human-readable errors (FileNotFoundError, YAML syntax).
 
