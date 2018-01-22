@@ -186,7 +186,7 @@ make html BOOK=book-example
 make pdf BOOK=book-example
 make epub BOOK=book-example
 make mobi BOOK=book-example
-make clean-md # clean intermediate files
+make clean-md BOOK=book-example # clean intermediate files
 ```
 
 Built files are saved in your book folder:
@@ -254,7 +254,7 @@ _This option is not available for PDF because LaTeX is used_
 
 #### PDF
 
-Although CSS is not available for PDF version you can change margins and page breaks.
+Although CSS is not available for PDF version because its style is set by [LaTeX](https://en.wikipedia.org/wiki/LaTeX) you can change margins and page breaks.
 
 You can edit margin size in centimeters (`cm`) or inches (`in`) for PDF files in the variable `PDF_MARGIN` at the top of the `makefile`.
 
@@ -267,12 +267,18 @@ Math equations are rendered using MathML, supported for HTML and PDF but only fo
 
 ## TODO
 
+- Add argument to hide others or keep scroll in HTML.
+
 - Add page number argument for each link (printed gamebooks).
 
 - Human-readable errors (FileNotFoundError, YAML syntax).
 
+- Anchor hyperlinks with target=\_blank
+
+- Fix PDF generation for Tutorial book.
+
 - Check links.
 
-- Yeoman CLI (new book, new chapter, visualize graph links)
+- Yeoman CLI (new book, new chapter, visualize graph links, rename chapter id)
 
 - Additional README in Spanish.

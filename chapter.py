@@ -6,7 +6,7 @@ from os.path import join, isdir, abspath
 
 class Chapter:
 
-    NEXT_REGEX = re.compile(r'\(\s*(.*?)\s*->\s*\[\s*(.*?)\s*\]\s*\)',re.S|re.M)
+    NEXT_REGEX = re.compile(r'\(\s*([^\)]*?)\s*->\s*\[\s*(.*?)\s*\]\s*\)',re.S|re.M)
 
     def __init__(self, book, id):
         self.book = book
