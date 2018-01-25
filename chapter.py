@@ -15,9 +15,9 @@ class Chapter:
         self._order = None
         self.id = self.__extract_id(full_id)
         metadata_file = self.file(self.full_id + '.yml')
-        metadata = yaml.load(metadata_file)
+        metadata = load(metadata_file)
         metadata_file.close()
-        self.title = property(metadata, 'title')
+        self.title = property(metadata, 'title', metadata_file.name)
         self.text = self.file(self.full_id + '.md').read()
 
     def parse_children(self):

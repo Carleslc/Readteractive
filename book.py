@@ -8,14 +8,14 @@ class Book:
         self.id = id
         self.child_formatter = child_formatter
         metadata_file = self.file(Book.METADATA_FILE)
-        metadata = yaml.load(metadata_file)
+        metadata = load(metadata_file)
+        self.title = property(metadata, 'title', metadata_file.name)
+        self.author = property(metadata, 'author', metadata_file.name, optional=True)
+        self.language = property(metadata, 'language', metadata_file.name, optional=True, default='en')
+        self.description = property(metadata, 'description', metadata_file.name, optional=True, default='')
+        self.cover = property(metadata, 'cover-image', metadata_file.name, optional=True)
+        self.start = Chapter.format_id(property(metadata, 'start', metadata_file.name, optional=True))
         metadata_file.close()
-        self.title = property(metadata, 'title')
-        self.author = property(metadata, 'author', optional=True)
-        self.language = property(metadata, 'language', optional=True, default='en')
-        self.description = property(metadata, 'description', optional=True, default='')
-        self.cover = property(metadata, 'cover-image', optional=True)
-        self.start = Chapter.format_id(property(metadata, 'start', optional=True))
         self.__load_chapters()
         #self.__check_links()
 
