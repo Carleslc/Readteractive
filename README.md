@@ -214,8 +214,15 @@ make html BOOK=book-example
 make pdf BOOK=book-example
 make epub BOOK=book-example
 make mobi BOOK=book-example
-make clean-md BOOK=book-example # clean intermediate files
 ```
+
+If you are going to print your book then you should be asking about chapter and page references, because links does not work in paper. You are right. If you do so you will need to have chapter order defined as explained in [Chapters Order](#chapters-order). Then, you can build your book using the variable `PRINTED`:
+
+```
+make BOOK=book-example PRINTED=yes
+```
+
+This will add the chapter order on each section and all link references will have that number after the option text. Then you can go to the last page where the Table of Contents is located and follow the page of the referenced chapter.
 
 Built files are saved in your book folder:
 
@@ -292,7 +299,11 @@ _This option is not available for PDF because LaTeX is used_
 
 Although CSS is not available for PDF version because its style is set by [LaTeX](https://en.wikipedia.org/wiki/LaTeX) you can change margins and page breaks.
 
-You can edit margin size in centimeters (`cm`) or inches (`in`) for PDF files in the variable `PDF_MARGIN` at the top of the `makefile`.
+You can edit margin size in centimeters (`cm`) or inches (`in`) for PDF files setting the variable `PDF_MARGIN`:
+
+```
+make pdf BOOK=book-example PDF_MARGIN=1cm
+```
 
 You can define an explicit page break using `\newpage` and explicit new line using `\newline` inside your chapter `.md` file.
 Unfortunately at the moment this only works for PDF version.
@@ -304,10 +315,6 @@ Math equations are rendered using MathML, supported for HTML and PDF but only fo
 ## TODO
 
 - Add argument to hide others or keep scroll in HTML.
-
-- Add page number argument for each link (_printed gamebooks_).
-
-- Human-readable errors (YAML syntax).
 
 - Check links.
 

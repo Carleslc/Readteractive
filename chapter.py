@@ -12,7 +12,7 @@ class Chapter:
     def __init__(self, book, full_id):
         self.book = book
         self.full_id = full_id
-        self._order = None
+        self.order = None
         self.id = self.__extract_id(full_id)
         metadata_file = self.file(self.full_id + '.yml')
         metadata = load(metadata_file)
@@ -28,7 +28,7 @@ class Chapter:
                 error('Broken link. Chapter "%s" not found and required in %s at "(%s -> [%s])"' % (next_id, self.id, next_text, next_id))
             self.children.add(id_no_prefix)
             chapter = self.book.get_chapter(id_no_prefix)
-            return self.book.child_formatter(chapter.id, next_text, self.__header_markdown_reference(chapter.title))
+            return self.book.child_formatter(chapter.id, next_text, self.__header_markdown_reference(chapter.title), chapter.order)
         self.children = set()
         self.text = re.sub(Chapter.NEXT_REGEX, next_replacement, self.text)
 
@@ -38,16 +38,16 @@ class Chapter:
 
     def __extract_id(self, id):
         def replacement(match):
-            self._order = int(match.groups()[0])
+            self.order = int(match.groups()[0])
             return ''
         return re.sub(Chapter.ID_PREFIX, replacement, id)
 
     def __lt__(self, other):
         """Order has preference, then alphabetically"""
-        if self._order != None:
-            return self._order < other._order if other._order != None else True
+        if self.order != None:
+            return self.order < other.order if other.order != None else True
         else:
-            return False if other._order != None else self.id < other.id 
+            return False if other.order != None else self.id < other.id 
 
     def file(self, chapter_file, mode='r'):
         return self.book.file(join(self.full_id, chapter_file), mode)

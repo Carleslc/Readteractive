@@ -1,4 +1,10 @@
+# Change PDF margin in centimeters (cm) or inches (in)
+# Change in command with: make BOOK=book-example PDF_MARGIN=1cm
 PDF_MARGIN = 3cm
+
+# Add chapter references for printed books
+# Change in command with: make BOOK=book-example PRINTED=yes
+PRINTED = no
 
 # Change in command with: make BOOK=book-example
 BOOK = book-example
@@ -9,12 +15,9 @@ PYTHON = $(shell which python3 2>/dev/null)
 PANDOC = $(shell which pandoc 2>/dev/null)
 KINDLEGEN = $(shell which kindlegen 2>/dev/null)
 
-.PHONY: all clean clean-md check_python check_pandoc check_kindlegen
+.PHONY: all clean check_python check_pandoc check_kindlegen
 
-all: clean markdown html pdf epub clean-md mobi
-
-clean-md:
-	rm -f ${DIR}/${BOOK}*.md
+all: clean html pdf epub mobi
 
 clean:
 	rm -f ${DIR}/${BOOK}*
@@ -31,23 +34,27 @@ configure: check_python
 	$(eval STYLESHEET := $(shell ${PYTHON} get_property.py ${DIR}/_meta.yml 2>/dev/null))
 	$(eval STYLESHEET_OPTION := $(if ${STYLESHEET},--css ${STYLESHEET},))
 
-check_pandoc:
+check_pandoc: check_python
 	$(if ${PANDOC},,$(error "[WARNING] Pandoc dependency not found (command pandoc). Skipping PDF, EPUB and MOBI generation."))
 
 check_kindlegen:
 	$(if ${KINDLEGEN},,$(error "[WARNING] Kindlegen dependency not found (command kindlegen). Skipping MOBI generation."))
 
-markdown: configure
-	${PYTHON} process_book.py ${BOOK}
-
-html: markdown check_pandoc
+html: check_pandoc
+	${PYTHON} process_book.py ${BOOK} html --printed=${PRINTED}
 	${PANDOC} --resource-path=.:${DIR} -V lang=${LANGUAGE} ${DIR}/${BOOK}-html.md -o ${DIR}/${BOOK}.html --css pandoc-html.css --mathml --self-contained
+	rm -f ${DIR}/${BOOK}-*.md
 
-pdf: markdown check_pandoc
+pdf: check_pandoc
+	$(eval LANGUAGE := $(shell ${PYTHON} get_property.py ${DIR}/_meta.yml language --default en))
+	${PYTHON} process_book.py ${BOOK} pdf --printed=${PRINTED}
 	${PANDOC} --pdf-engine=xelatex --resource-path=${DIR} -V lang=${LANGUAGE} ${DIR}/${BOOK}-pdf.md -o ${DIR}/${BOOK}.pdf -V geometry:margin=${PDF_MARGIN}
+	rm -f ${DIR}/${BOOK}-*.md
 
-epub: markdown check_pandoc
-	${PANDOC} --pdf-engine=xelatex --resource-path=${DIR} -V lang=${LANGUAGE} ${DIR}/${BOOK}-epub.md -o ${DIR}/${BOOK}.epub ${COVER} ${STYLESHEET_OPTION}
+epub: check_pandoc
+	${PYTHON} process_book.py ${BOOK} epub --printed=${PRINTED}
+	${PANDOC} --resource-path=${DIR} -V lang=${LANGUAGE} ${DIR}/${BOOK}-epub.md -o ${DIR}/${BOOK}.epub ${COVER} ${STYLESHEET_OPTION}
+	rm -f ${DIR}/${BOOK}-*.md
 
 mobi: epub check_kindlegen
 	${KINDLEGEN} -locale ${LANGUAGE} ${DIR}/${BOOK}.epub

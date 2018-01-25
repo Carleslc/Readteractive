@@ -4,13 +4,15 @@
 import argparse, os, re
 from book import Book
 
-FORMAT = None
-
 def set_args():
     global args
     parser = argparse.ArgumentParser()
     parser.add_argument("book", help="Book to generate, where id is the directory where the book is located")
+    parser.add_argument("format", help="Format to build the book")
+    parser.add_argument("--printed", help="Add chapter number references for printed books", default='no')
     args = parser.parse_args()
+
+    args.printed = args.printed == 'yes'
 
 def write_or_return(s, file=None):
     if file is None:
@@ -56,7 +58,8 @@ def format_description():
 def format_chapter(chapter, format, last=False):
     visibility = 'style="display: none"' if format == 'html' and BOOK.start != chapter.id else ''
     chapter_string = '<div id="chapter_%s"%s>\n\n' % (chapter.id, visibility)
-    chapter_string += '# %s\n\n' % chapter.title
+    page = '[%s] ' % chapter.order if args.printed and chapter.order != None else ''
+    chapter_string += '# %s%s\n\n' % (page, chapter.title)
     chapter_string += chapter.text
     chapter_string += new_line()
     if not last:
@@ -66,10 +69,11 @@ def format_chapter(chapter, format, last=False):
     chapter_string += '</div>\n'
     return chapter_string
 
-def child_formatter(id, text, title):
-    return '(<span onclick="show_chapter(\'chapter_%s\')">[**%s**](#%s)</span>)' % (id, text, title)
+def child_formatter(id, text, title, order):
+    page = ' [%s]' % order if args.printed and order != None else ''
+    return '(<span onclick="show_chapter(\'chapter_%s\')">[**%s**%s](#%s)</span>)' % (id, text, page, title)
 
-def generate(format):
+def build(format):
     filename = '%s-%s.md' % (BOOK.id, format)
     with BOOK.file(filename, 'w') as book:
         book.write('---\n')
@@ -94,8 +98,6 @@ if __name__ == "__main__":
 
     BOOK = Book(args.book, child_formatter)
     
-    generate('html')
-    generate('pdf')
-    generate('epub')
+    build(args.format)
 
     print(BOOK.get_links())

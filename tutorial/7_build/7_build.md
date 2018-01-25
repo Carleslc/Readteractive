@@ -26,8 +26,15 @@ make html BOOK=book-example
 make pdf BOOK=book-example
 make epub BOOK=book-example
 make mobi BOOK=book-example
-make clean-md BOOK=book-example # clean intermediate files
 ```
+
+If you are going to print your book then you should be asking about chapter and page references, because links does not work in paper. You are right. If you do so you will need to have chapter order defined as explained in (chapters order -> [chapter-order]). Then, you can build your book using the variable `PRINTED`:
+
+```
+make BOOK=book-example PRINTED=yes
+```
+
+This will add the chapter order on each section and all link references will have that number after the option text. Then you can go to the last page where the Table of Contents is located and follow the page of the referenced chapter.
 
 Built files are saved in your book folder:
 
