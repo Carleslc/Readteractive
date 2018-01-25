@@ -53,4 +53,8 @@ class Book:
         return '\n'.join(['%s -> %s' % (chapter.id, children_links(chapter.children)) for chapter in self.chapters])
 
     def file(self, book_file, mode='r'):
-        return open(join(self.id, book_file), mode)
+        path = join(self.id, book_file)
+        try:
+            return open(path, mode)
+        except FileNotFoundError:
+            error('%s not found' % path)

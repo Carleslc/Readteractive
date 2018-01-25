@@ -307,12 +307,10 @@ Math equations are rendered using MathML, supported for HTML and PDF but only fo
 
 - Add page number argument for each link (_printed gamebooks_).
 
-- Human-readable errors (FileNotFoundError, YAML syntax).
-
-- Anchor hyperlinks with target=_blank
+- Human-readable errors (YAML syntax).
 
 - Check links.
 
-- Yeoman CLI (new book, new chapter, visualize graph links, rename chapter id)
+- Yeoman CLI (new book, new chapter, visualize graph links, rename chapter id).
 
 - Additional Readme and Tutorial in Spanish.

@@ -28,7 +28,10 @@ def property(yaml, key, optional=False, default=None):
 if __name__ == "__main__":
     set_args()
 
-    meta_file = yaml.load(open(args.path, 'r'))
+    try:
+        meta_file = yaml.load(open(args.path, 'r'))
+    except FileNotFoundError:
+        error('%s not found' % args.path)
 
     value = property(meta_file, key=args.property, optional=True, default=args.default)
 
