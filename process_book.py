@@ -10,9 +10,14 @@ def set_args():
     parser.add_argument("book", help="Book to generate, where id is the directory where the book is located")
     parser.add_argument("format", help="Format to build the book")
     parser.add_argument("--printed", help="Add chapter number references for printed books", default='no')
+    parser.add_argument("--scroll", help="Add chapter number references for printed books", default='no')
     args = parser.parse_args()
 
-    args.printed = args.printed == 'yes'
+    args.printed = yes_no(args.printed)
+    args.scroll = yes_no(args.scroll)
+
+def yes_no(arg):
+    return arg == 'yes'
 
 def write_or_return(s, file=None):
     if file is None:
@@ -71,7 +76,8 @@ def format_chapter(chapter, format, last=False):
 
 def child_formatter(id, text, title, order):
     page = ' [%s]' % order if args.printed and order != None else ''
-    return '(<span onclick="show_chapter(\'chapter_%s\')">[**%s**%s](#%s)</span>)' % (id, text, page, title)
+    scroll = str(args.scroll).lower()
+    return '(<span onclick="show_chapter(\'chapter_%s\', %s)">[**%s**%s](#%s)</span>)' % (id, scroll, text, page, title)
 
 def build(format):
     filename = '%s-%s.md' % (BOOK.id, format)

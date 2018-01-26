@@ -1,4 +1,4 @@
-Clone this repository with [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) or download the current version as [zip](https://github.com/Carleslc/Readteractive/releases).
+Clone [this repository](https://github.com/Carleslc/Readteractive) with [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) or download the current version as [zip](https://github.com/Carleslc/Readteractive/releases).
 
 ## Install dependencies
 

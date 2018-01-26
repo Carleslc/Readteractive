@@ -15,7 +15,13 @@ The PDF version use [LaTeX](https://en.wikipedia.org/wiki/LaTeX) to get a high-q
 
 Each chapter will generate a header in the table of contents of the PDF, EPUB and MOBI metadata, and each option will have a clickable link that jumps to the next chapter page.
 
-The HTML version is more dynamic. It only shows the chapters you have followed with a click on a link so story proceeds more interactively over the book. It also works offline (is self-contained).
+The HTML version is more dynamic. It only shows the current chapter you have followed with a click on a link so story proceeds more interactively over the book. It also works offline (is self-contained).
+
+If you want to keep available all visited chapters doing scroll you can set the variable `SCROLL`:
+
+```
+make html BOOK=book-example SCROLL=yes
+```
 
 The MOBI version is useful for Kindle devices.
 

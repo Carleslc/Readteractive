@@ -6,6 +6,10 @@ PDF_MARGIN = 3cm
 # Change in command with: make BOOK=book-example PRINTED=yes
 PRINTED = no
 
+# Keep all visited chapters available with scrolling in HTML format
+# Change in command with: make html BOOK=book-example SCROLL=yes
+SCROLL = no
+
 # Change in command with: make BOOK=book-example
 BOOK = book-example
 DIR = ${BOOK}
@@ -41,7 +45,7 @@ check_kindlegen:
 	$(if ${KINDLEGEN},,$(error "[WARNING] Kindlegen dependency not found (command kindlegen). Skipping MOBI generation."))
 
 html: check_pandoc
-	${PYTHON} process_book.py ${BOOK} html --printed=${PRINTED}
+	${PYTHON} process_book.py ${BOOK} html --scroll=${SCROLL}
 	${PANDOC} --resource-path=.:${DIR} -V lang=${LANGUAGE} ${DIR}/${BOOK}-html.md -o ${DIR}/${BOOK}.html --css pandoc-html.css --mathml --self-contained
 	rm -f ${DIR}/${BOOK}-*.md
 
