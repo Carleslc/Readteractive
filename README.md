@@ -227,6 +227,12 @@ make BOOK=book-example PRINTED=yes
 
 This will add the chapter order on each section and all link references will have that number after the option text. Then you can go to the last page where the Table of Contents is located and follow the page of the referenced chapter.
 
+Building your book is even easier with our [CLI](#cli) wizard:
+
+```
+yo readteractive:build
+```
+
 Built files are saved in your book folder:
 
 ```

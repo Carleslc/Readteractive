@@ -519,6 +519,8 @@ make mobi BOOK=book-example</code></pre>
 <p>If you are going to print your book then you should be asking about chapter and page references, because links does not work in paper. You are right. If you do so you will need to have chapter order defined as explained in (<span onclick="show_chapter('chapter_chapter-order', false)"><a href="#chapters-order"><strong>chapters order</strong></a></span>). Then, you can build your book using the variable <code>PRINTED</code>:</p>
 <pre><code>make BOOK=book-example PRINTED=yes</code></pre>
 <p>This will add the chapter order on each section and all link references will have that number after the option text. Then you can go to the last page where the Table of Contents is located and follow the page of the referenced chapter.</p>
+<p>Building your book is even easier with our (<span onclick="show_chapter('chapter_cli', false)"><a href="#scaffolding"><strong>CLI</strong></a></span>) wizard:</p>
+<pre><code>yo readteractive:build</code></pre>
 <p>Built files are saved in your book folder:</p>
 <pre><code>.
 ├── book-example/
