@@ -30,8 +30,6 @@ check_python:
 	$(if ${PYTHON},,$(error "[ERROR] Python 3 dependency not found (command python3). Install it and try again."))
 
 configure: check_python
-	$(eval LANGUAGE := $(shell ${PYTHON} get_property.py ${DIR}/_meta.yml language --default en))
-	
 	$(eval COVER_IMAGE := $(shell ${PYTHON} get_property.py ${DIR}/_meta.yml cover-image 2>/dev/null))
 	$(eval COVER := $(if ${COVER_IMAGE},--epub-cover-image=${DIR}/${COVER_IMAGE},))
 
@@ -45,6 +43,7 @@ check_kindlegen:
 	$(if ${KINDLEGEN},,$(error "[WARNING] Kindlegen dependency not found (command kindlegen). Skipping MOBI generation."))
 
 html: check_pandoc
+	$(eval LANGUAGE := $(shell ${PYTHON} get_property.py ${DIR}/_meta.yml language --default en))
 	${PYTHON} process_book.py ${BOOK} html --scroll=${SCROLL}
 	${PANDOC} --resource-path=.:${DIR} -V lang=${LANGUAGE} ${DIR}/${BOOK}-html.md -o ${DIR}/${BOOK}.html --css pandoc-html.css --mathml --self-contained
 	rm -f ${DIR}/${BOOK}-*.md
@@ -56,9 +55,11 @@ pdf: check_pandoc
 	rm -f ${DIR}/${BOOK}-*.md
 
 epub: check_pandoc
+	$(eval LANGUAGE := $(shell ${PYTHON} get_property.py ${DIR}/_meta.yml language --default en))
 	${PYTHON} process_book.py ${BOOK} epub --printed=${PRINTED}
 	${PANDOC} --resource-path=${DIR} -V lang=${LANGUAGE} ${DIR}/${BOOK}-epub.md -o ${DIR}/${BOOK}.epub ${COVER} ${STYLESHEET_OPTION}
 	rm -f ${DIR}/${BOOK}-*.md
 
 mobi: epub check_kindlegen
+	$(eval LANGUAGE := $(shell ${PYTHON} get_property.py ${DIR}/_meta.yml language --default en))
 	${KINDLEGEN} -locale ${LANGUAGE} ${DIR}/${BOOK}.epub
