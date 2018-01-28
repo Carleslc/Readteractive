@@ -6,7 +6,8 @@ from os.path import join, isdir, abspath
 
 class Chapter:
 
-    ID_PREFIX = re.compile(r'^(\d+)[-_]',re.S)
+    ONLY_ORDER = re.compile(r'^\d+[-_]*$',re.S)
+    ID_PREFIX = re.compile(r'^(\d+)[-_]*',re.S)
     NEXT_REGEX = re.compile(r'\(\s*([^\)]*?)\s*->\s*\[\s*(.*?)\s*\]\s*\)',re.S|re.M)
 
     def __init__(self, book, full_id):
@@ -39,7 +40,7 @@ class Chapter:
     def __extract_id(self, id):
         def replacement(match):
             self.order = int(match.groups()[0])
-            return ''
+            return id if re.match(Chapter.ONLY_ORDER, id) else ''
         return re.sub(Chapter.ID_PREFIX, replacement, id)
 
     def __lt__(self, other):

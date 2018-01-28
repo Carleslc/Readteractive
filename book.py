@@ -17,7 +17,7 @@ class Book:
         self.start = Chapter.format_id(property(metadata, 'start', metadata_file.name, optional=True))
         metadata_file.close()
         self.__load_chapters()
-        #self.__check_links()
+        self.__check_links()
 
     def __load_chapters(self):
         self.__full_ids = []
@@ -39,7 +39,8 @@ class Book:
             error('Cannot build a book without any chapter! Ensure you have at least one chapter and it follows the structure defined in README.md')
 
     def __check_links(self):
-        error('TODO')
+        # TODO: no self-references, no impossible chapters to reach
+        return
 
     def exists_chapter(self, id):
         return Chapter.format_id(id) in self.__chapters
