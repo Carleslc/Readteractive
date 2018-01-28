@@ -34,7 +34,7 @@ class Book:
         if len(self.chapters) == 0:
             error('Cannot build a book without any chapter! Ensure you have at least one chapter and it follows the structure defined in README.md')
         if self.start is None:
-            self.start = self.chapters[0]
+            self.start = self.chapters[0].id
         else:
             self.chapters = [self.get_chapter(self.start)] + self.chapters
 
