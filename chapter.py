@@ -54,4 +54,4 @@ class Chapter:
         return self.book.file(join(self.full_id, chapter_file), mode)
 
     def format_id(id):
-        return re.sub(Chapter.ID_PREFIX, '', id)
+        return None if id == None else re.sub(Chapter.ID_PREFIX, '', id)

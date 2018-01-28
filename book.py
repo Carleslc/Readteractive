@@ -31,12 +31,12 @@ class Book:
         # Public list of chapters sorted by id
         not_start = filter(lambda id: Chapter.format_id(id) != self.start, self.__full_ids)
         self.chapters = sorted([self.get_chapter(id) for id in not_start])
+        if len(self.chapters) == 0:
+            error('Cannot build a book without any chapter! Ensure you have at least one chapter and it follows the structure defined in README.md')
         if self.start is None:
             self.start = self.chapters[0]
         else:
             self.chapters = [self.get_chapter(self.start)] + self.chapters
-        if len(self.chapters) == 0:
-            error('Cannot build a book without any chapter! Ensure you have at least one chapter and it follows the structure defined in README.md')
 
     def __check_links(self):
         # TODO: no self-references, no impossible chapters to reach
