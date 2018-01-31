@@ -26,13 +26,13 @@ class Book:
             chapter = Chapter(self, full_id)
             self.__full_ids.append(full_id)
             self.__chapters[chapter.id] = chapter
+        if len(self.__chapters) == 0:
+            error('Cannot build a book without any chapter! Ensure you have at least one chapter and it follows the structure defined in README.md')
         for chapter in self.__chapters.values():
             chapter.parse_children() # may require other chapters, so it need to be after filling chapters dict
         # Public list of chapters sorted by id
         not_start = filter(lambda id: Chapter.format_id(id) != self.start, self.__full_ids)
         self.chapters = sorted([self.get_chapter(id) for id in not_start])
-        if len(self.chapters) == 0:
-            error('Cannot build a book without any chapter! Ensure you have at least one chapter and it follows the structure defined in README.md')
         if self.start is None:
             self.start = self.chapters[0].id
         else:
