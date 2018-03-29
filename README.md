@@ -323,8 +323,8 @@ Math equations are rendered using MathML, supported for HTML and PDF but only fo
 
 ## TODO
 
-- Yeoman CLI (new book, new chapter, visualize graph links, rename chapter id).
+- Yeoman CLI to visualize graph links and renaming chapter ids.
 
-- Check links.
+- Validate links.
 
 - Additional Readme and Tutorial in Spanish.
