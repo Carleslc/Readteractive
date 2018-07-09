@@ -14,6 +14,16 @@ SCROLL = no
 BOOK = book-example
 DIR = ${BOOK}
 
+# Offline HTML Access. Note that resulting file will be much bigger than disabling this option.
+# Chan in command with: make BOOK=book-example OFFLINE=no
+OFFLINE = yes
+
+ifeq ($(OFFLINE),yes)
+    SELFCONTAINED = --self-contained
+else
+	SELFCONTAINED = # empty
+endif
+
 # Dependencies
 PYTHON = $(shell which python3 2>/dev/null)
 PANDOC = $(shell which pandoc 2>/dev/null)
@@ -45,7 +55,7 @@ check_kindlegen:
 html: check_pandoc
 	$(eval LANGUAGE := $(shell ${PYTHON} get_property.py ${DIR}/_meta.yml language --default en))
 	${PYTHON} process_book.py ${BOOK} html --scroll=${SCROLL}
-	${PANDOC} --resource-path=.:${DIR} -V lang=${LANGUAGE} ${DIR}/${BOOK}-html.md -o ${DIR}/${BOOK}.html --css pandoc-html.css --mathml --self-contained
+	${PANDOC} --resource-path=.:${DIR} -V lang=${LANGUAGE} ${DIR}/${BOOK}-html.md -o ${DIR}/${BOOK}.html --css pandoc-html.css --mathml ${SELFCONTAINED}
 	rm -f ${DIR}/${BOOK}-*.md
 
 pdf: check_pandoc

@@ -4,7 +4,7 @@ class Book:
 
     METADATA_FILE = '_meta.yml'
 
-    def __init__(self, id, child_formatter):
+    def __init__(self, id, child_formatter=None):
         self.id = id
         self.child_formatter = child_formatter
         metadata_file = self.file(Book.METADATA_FILE)
@@ -16,7 +16,8 @@ class Book:
         self.cover = property(metadata, 'cover-image', metadata_file.name, optional=True)
         self.start = Chapter.format_id(property(metadata, 'start', metadata_file.name, optional=True))
         metadata_file.close()
-        self.__load_chapters()
+        if self.child_formatter != None:
+            self.__load_chapters()
         self.__check_links()
 
     def __load_chapters(self):

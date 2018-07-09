@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
-import argparse, os, re
+import argparse, re
 from book import Book
 
 def set_args():
@@ -10,7 +10,7 @@ def set_args():
     parser.add_argument("book", help="Book to generate, where id is the directory where the book is located")
     parser.add_argument("format", help="Format to build the book")
     parser.add_argument("--printed", help="Add chapter number references for printed books", default='no')
-    parser.add_argument("--scroll", help="Add chapter number references for printed books", default='no')
+    parser.add_argument("--scroll", help="Set scrolling instead section replacement for online books", default='no')
     args = parser.parse_args()
 
     args.printed = yes_no(args.printed)
