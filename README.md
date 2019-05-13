@@ -3,6 +3,8 @@ Tool for writing and generating interactive books, also known as gamebooks.
 
 [**Play this README as a gamebook!**](https://carleslc.me/Readteractive)
 
+[![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/C0C2VFGD)
+
 ## Overview
 
 <!-- MarkdownTOC -->
