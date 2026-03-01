@@ -1,7 +1,4 @@
 .DS_Store
 __pycache__
-tutorial/*.html
-book-example/*.html
 .yo-rc.json
-kayrun
 bitly.txt

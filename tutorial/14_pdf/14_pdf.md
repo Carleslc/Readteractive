@@ -7,6 +7,6 @@ make pdf BOOK=book-example PDF_MARGIN=1cm
 ```
 
 You can define an explicit page break using `\newpage` and explicit new line using `\newline` inside your chapter `.md` file.
-Unfortunately at the moment this only works for PDF version.
+Unfortunately this only works for PDF version.
 
 (I want to know more about styles -> [style])

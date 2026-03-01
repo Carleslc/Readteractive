@@ -1,4 +1,4 @@
-Each chapter can link to a many different chapters using the following syntax:
+Each chapter can link to many different chapters using the following syntax:
 
 ![Option syntax](https://i.imgur.com/uoOfXFT.png)
 
@@ -17,4 +17,5 @@ These options are equivalent.
 This prefix skipping only works for digits followed by - or \_.
 
 - (How to style your book -> [style])
+- (How to visualize your book links graph -> [cli])
 - (Return back -> [getting-started])

@@ -14,6 +14,7 @@ class Book:
         self.language = property(metadata, 'language', metadata_file.name, optional=True, default='en')
         self.description = property(metadata, 'description', metadata_file.name, optional=True, default='')
         self.cover = property(metadata, 'cover-image', metadata_file.name, optional=True)
+        self.github = property(metadata, 'github', metadata_file.name, optional=True)
         self.start = Chapter.format_id(property(metadata, 'start', metadata_file.name, optional=True))
         metadata_file.close()
         if self.child_formatter != None:

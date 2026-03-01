@@ -9,23 +9,8 @@ This will ensure your book and chapters structure is right, check for broken lin
 - HTML
 - PDF
 - EPUB
-- MOBI
 
-The PDF version use [LaTeX](https://en.wikipedia.org/wiki/LaTeX) to get a high-quality typography.
-
-Each chapter will generate a header in the table of contents of the PDF, EPUB and MOBI metadata, and each option will have a clickable link that jumps to the next chapter page.
-
-The HTML version is more dynamic. It only shows the current chapter you have followed with a click on a link so story proceeds more interactively over the book. It also works offline (is self-contained).
-
-If you want to keep available all visited chapters doing scroll you can set the variable `SCROLL`:
-
-```
-make html BOOK=book-example SCROLL=yes
-```
-
-The MOBI version is useful for Kindle devices.
-
-Furthermore, you can build only the desired format:
+You can also build only the desired format:
 
 ```
 make html BOOK=book-example
@@ -34,7 +19,21 @@ make epub BOOK=book-example
 make mobi BOOK=book-example
 ```
 
-If you are going to print your book then you should be asking about chapter and page references, because links does not work in paper. You are right. If you do so you will need to have chapter order defined as explained in (chapters order -> [chapter-order]). Then, you can build your book using the variable `PRINTED`:
+Each chapter will generate a header in the table of contents of the PDF, EPUB and MOBI metadata, and each option will have a clickable link that jumps to the next chapter page.
+
+The PDF version uses [LaTeX](https://en.wikipedia.org/wiki/LaTeX) to get a high-quality typography.
+
+EPUB is the recommended format for e-readers, including Kindle. MOBI version may be useful for older Kindle devices.
+
+The HTML version is more dynamic. It only shows the current chapter you have followed with a click on a link so story proceeds more interactively over the book. It also works offline (it's self-contained).
+
+If you want to keep available all visited chapters doing scroll you can set the variable `SCROLL`:
+
+```
+make html BOOK=book-example SCROLL=yes
+```
+
+If you are going to **print** your book then you should be asking about chapter and page references, because links does not work in paper. You are right. If you do so you will need to have chapter order defined as explained in (chapters order -> [chapter-order]). Then, you can build your book using the variable `PRINTED`:
 
 ```
 make BOOK=book-example PRINTED=yes
@@ -52,11 +51,11 @@ Built files are saved in your book folder:
 
 ```
 .
-├── book-example/
-│   └── book-example.html
-│   └── book-example.pdf
-│   └── book-example.epub
-│   └── book-example.mobi
++-- book-example/
+|   +-- book-example.html
+|   +-- book-example.pdf
+|   +-- book-example.epub
+|   +-- book-example.mobi
 ```
 
 - (How to write your book -> [write])

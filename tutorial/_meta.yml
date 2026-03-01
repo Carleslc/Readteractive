@@ -4,3 +4,4 @@ start: start
 language: en
 cover-image: adventure_time.png
 description: Tool for writing and generating interactive books, also known as gamebooks.
+github: https://github.com/Carleslc/Readteractive

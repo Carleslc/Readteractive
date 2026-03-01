@@ -4,15 +4,15 @@ Once book is built, the first chapter shown will be the chapter specified in **`
 
 ```
 .
-├── book-example/
-│   └── _meta.yml
-│   └── 0-before/
-│       ├── 0-before.md
-│       └── 0-before.yml
-│   └── 1-after/
-│       ├── image.png
-│       ├── 1-after.md
-│       └── 1-after.yml
++-- book-example/
+|   +-- _meta.yml
+|   +-- 0-before/
+|   |   +-- 0-before.md
+|   |   +-- 0-before.yml
+|   +-- 1-after/
+|   |   +-- image.png
+|   |   +-- 1-after.md
+|   |   +-- 1-after.yml
 ```
 
 In this example, assuming that no `start` is set inside `_meta.yml`, the first chapter to show up will be `0-before`, followed by `1-after`.

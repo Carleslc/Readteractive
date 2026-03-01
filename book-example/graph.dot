@@ -1,0 +1,10 @@
+digraph "Example _gamebook_" {
+  rankdir=TB;
+  node [shape=box, style="rounded,filled", fillcolor="#f0f0f0", fontname="Helvetica"];
+  edge [color="#333333", fontname="Helvetica", fontsize=10];
+
+  "end" [label="Game over\n(end)"];
+  "start" [label="Example _chapter_\n(start)"];
+
+  "start" -> "end" [label="Go to the end"];
+}

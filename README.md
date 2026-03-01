@@ -7,29 +7,28 @@ Tool for writing and generating interactive books, also known as gamebooks.
 
 ## Overview
 
-<!-- MarkdownTOC -->
+<!-- toc -->
 
 - [What is a gamebook?](#what-is-a-gamebook)
 - [Getting started](#getting-started)
-    - [Install dependencies](#install-dependencies)
-    - [CLI](#cli)
-    - [Readteractive structure](#readteractive-structure)
-        - [Top folder](#top-folder)
-        - [Books and chapters folders](#books-and-chapters-folders)
-        - [Book metadata](#book-metadata)
-        - [Chapter](#chapter)
-        - [Chapters order](#chapters-order)
-    - [How to build your book](#how-to-build-your-book)
-    - [How to write your book](#how-to-write-your-book)
-        - [How to write options](#how-to-write-options)
-    - [Styling your book](#styling-your-book)
-        - [Markdown](#markdown)
-        - [CSS](#css)
-        - [PDF](#pdf)
-        - [MathML](#mathml)
-- [TODO](#todo)
+  - [Install dependencies](#install-dependencies)
+  - [CLI](#cli)
+  - [Readteractive structure](#readteractive-structure)
+    - [Top folder](#top-folder)
+    - [Books and chapters folders](#books-and-chapters-folders)
+    - [Book metadata](#book-metadata)
+    - [Chapter](#chapter)
+    - [Chapters order](#chapters-order)
+  - [How to write your book](#how-to-write-your-book)
+    - [How to write options](#how-to-write-options)
+  - [How to build your book](#how-to-build-your-book)
+  - [Styling your book](#styling-your-book)
+    - [Markdown](#markdown)
+    - [CSS](#css)
+    - [PDF](#pdf)
+    - [MathML](#mathml)
 
-<!-- /MarkdownTOC -->
+<!-- tocstop -->
 
 ## What is a gamebook?
 
@@ -41,13 +40,14 @@ Production of new gamebooks in the West decreased dramatically during the nineti
 
 ## Getting started
 
-Clone this repository with [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) or download the current version as [zip](https://github.com/Carleslc/Readteractive/releases).
+Clone this repository with [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) or download the current version as [zip](https://github.com/Carleslc/Readteractive/archive/refs/heads/master.zip).
 
 ### Install dependencies
 
-Note for **Windows**: It is easier to install this dependencies and run Readteractive with a linux-like shell like [Cygwin](https://www.cygwin.com/install.html).
+Note for **Windows**: It is easier to install these dependencies and run Readteractive with a linux-like shell like [Cygwin](https://www.cygwin.com/install.html).
 
 - [**Python 3**](https://www.python.org/downloads/): Needed to process structure and build Markdown files used to generate your book.
+  - Install Python dependencies with: `pip install -r requirements.txt`
 - **Make**: Needed to bundle commands and generate your books in any format.
     - Linux: `apt-get install build-essential`
     - Mac OS:
@@ -55,8 +55,8 @@ Note for **Windows**: It is easier to install this dependencies and run Readtera
         - Or, using [Homebrew](https://brew.sh): `brew install make`
     - Windows: Install _make_ from Cygwin installer.
 - _(HTML, PDF, EPUB)_ [**Pandoc**](https://pandoc.org/installing.html): Needed to generate HTML, PDF and EPUB from Markdown files.
-- _(MOBI)_ [**KindleGen**](https://www.amazon.com/gp/feature.html?docId=1000765211): Needed to generate MOBI for Kindle from EPUB file.
-- _(Optional)_ [Kindle Previewer](https://www.amazon.com/gp/feature.html?ie=UTF8&docId=1000765261): Needed to preview how your MOBI files looks in tablet and Kindle devices.
+- _(MOBI, Optional)_ [**KindleGen**](https://www.amazon.com/gp/feature.html?docId=1000765211): Needed to generate MOBI from EPUB file.
+  - It is included installing [**Kindle Previewer**](https://www.amazon.com/Kindle-Previewer/b?node=21381691011), also used to preview how your MOBI files look in tablet and Kindle devices.
 - _(Optional)_ **librsvg**: Convert SVG images for being used inside PDF
     - Linux: `apt-get install librsvg2-bin`
     - Mac OS, using [Homebrew](https://brew.sh): `brew install librsvg`
@@ -64,7 +64,6 @@ Note for **Windows**: It is easier to install this dependencies and run Readtera
 
 ### CLI
 
-[![In development](https://img.shields.io/badge/status-in%20development-red.svg)](#todo)
 [![CLI repository](https://img.shields.io/badge/CLI-readteractive--generator-blue.svg)](https://github.com/Carleslc/readteractive-generator)
 
 A [yeoman](http://yeoman.io/learning/index.html) generator for scaffolding Readteractive books.
@@ -75,13 +74,17 @@ The [Readteractive structure](#readteractive-structure) and files can be automat
 
 It also provides a tool for **visualization** of your book with current chapters and the links between them, so you can have a general overview of the **narrative branches** of your book.
 
+For instance, this is the generated graph for this tutorial interactive book:
+
+![tutorial graph of chapters links](tutorial/graph.png)
+
 [**Install CLI and boost your productivity with Readteractive!**](https://github.com/Carleslc/readteractive-generator)
 
 ### Readteractive structure
 
 #### Top folder
 
-In the top folder there are the required files for building your books and configure dependencies. _Please, do not edit or move this files to another folder or build will fail._
+In the top folder there are the required files for building your books and configure dependencies. _Please, do not edit or move these files to another folder or build will fail._
 
 ```
 .
@@ -93,6 +96,7 @@ In the top folder there are the required files for building your books and confi
 ├── process_book.py
 ├── pandoc-html.css
 ├── makefile
+├── requirements.txt
 ├── LICENSE
 ├── README.md
 ```
@@ -112,8 +116,8 @@ Every book and chapter you generate needs to match the following structure:
 │       ├── image.png
 │       ├── second_chapter.md
 │       └── second_chapter.yml
-├── cover.png
-├── stylesheet.css
+│   └── cover.png
+│   └── stylesheet.css
 ```
 
 This structure and files can be automatically generated using our [CLI](#cli) for your custom book.
@@ -139,6 +143,7 @@ stylesheet: stylesheet.css
 description: |
     This is the description of your book.
     Hope you enjoy writting with Readteractive.
+github: https://github.com/user/repo
 ```
 
 - (Required) **Title**: The title of your book. You can use [Markdown](#markdown) here using **`**bold**`** and _`_italic_`_.
@@ -148,6 +153,7 @@ description: |
 - (Optional) **Cover Image**: File of the main image of your book.
 - (Optional) **Stylesheet**: The [CSS](#css) stylesheet of your book.
 - (Optional) **Description**: The description of your book.
+- (Optional) **GitHub**: GitHub repository URL. Displays a corner ribbon link in the HTML version.
 
 #### Chapter
 
@@ -183,6 +189,39 @@ Once book is built, the first chapter shown will be the chapter specified in **`
 
 In this example, assuming that no `start` is set inside `_meta.yml`, the first chapter to show up will be `0-before`, followed by `1-after`.
 
+### How to write your book
+
+A gamebook has many chapters with links between them. We refer to a chapter as a step with description in one of your narrative branches.
+
+If you have no previous experience writing gamebooks these are some _tips_:
+
+1. Plan your story. You can make a mind map with each of your narrative branches and which options follow which branch.
+2. Define each chapter and write them with Readteractive.
+3. Visualize your chapter graph with our [CLI](https://github.com/Carleslc/readteractive-generator) whenever you need to have an overview of your book and ensure each chapter have the links you want.
+4. [Build](#how-to-build-your-book) your book from time to time to have a look of how it is looking.
+
+#### How to write options
+
+Each chapter can link to many different chapters using the following syntax:
+
+```
+(Text -> [next])
+```
+
+Replace `Text` with your custom option text. Replace `next` with the chapter id which this link is pointing to.
+
+Readteractive will generate a link to the chapter on your book for every reference following this syntax.
+
+You can use [Markdown](#markdown) in `Text`.
+
+You can skip the chapter prefix defined for [custom order](#chapter-order) at the moment of writing an option in `next`:
+
+```
+(Go to after -> [after])
+```
+
+This option has the same effect than `(Go to after -> [1-after])` and `(Go to after -> [1_after])`. This prefix skipping only works for digits followed by - or \_.
+
 ### How to build your book
 
 If you have all dependencies installed is as easy as executing one command:
@@ -196,23 +235,8 @@ This will ensure your book and chapters structure is right, check for broken lin
 - HTML
 - PDF
 - EPUB
-- MOBI
 
-The PDF version use [LaTeX](https://en.wikipedia.org/wiki/LaTeX) to get a high-quality typography.
-
-Each chapter will generate a header in the table of contents of the PDF, EPUB and MOBI metadata, and each option will have a clickable link that jumps to the next chapter page.
-
-The HTML version is more dynamic. It only shows the current chapter you have followed with a click on a link so story proceeds more interactively over the book. It also works offline (is self-contained).
-
-If you want to keep available all visited chapters doing scroll you can set the variable `SCROLL`:
-
-```
-make html BOOK=book-example SCROLL=yes
-```
-
-The MOBI version is useful for Kindle devices.
-
-Furthermore, you can build only the desired format:
+You can also build only the desired format:
 
 ```
 make html BOOK=book-example
@@ -221,7 +245,21 @@ make epub BOOK=book-example
 make mobi BOOK=book-example
 ```
 
-If you are going to print your book then you should be asking about chapter and page references, because links does not work in paper. You are right. If you do so you will need to have chapter order defined as explained in [Chapters Order](#chapters-order). Then, you can build your book using the variable `PRINTED`:
+Each chapter will generate a header in the table of contents of the PDF, EPUB and MOBI metadata, and each option will have a clickable link that jumps to the next chapter page.
+
+The PDF version uses [LaTeX](https://en.wikipedia.org/wiki/LaTeX) to get a high-quality typography.
+
+EPUB is the recommended format for e-readers, including Kindle. MOBI version may be useful for older Kindle devices.
+
+The HTML version is more dynamic. It only shows the current chapter you have followed with a click on a link so story proceeds more interactively over the book. It also works offline (it's self-contained).
+
+If you want to keep available all visited chapters doing scroll you can set the variable `SCROLL`:
+
+```
+make html BOOK=book-example SCROLL=yes
+```
+
+If you are going to **print** your book then you should be asking about chapter and page references, because links does not work in paper. You are right. If you do so you will need to have chapter order defined as explained in [Chapters Order](#chapters-order). Then, you can build your book using the variable `PRINTED`:
 
 ```
 make BOOK=book-example PRINTED=yes
@@ -245,39 +283,6 @@ Built files are saved in your book folder:
 │   └── book-example.epub
 │   └── book-example.mobi
 ```
-
-### How to write your book
-
-A gamebook has many chapters with links between them. We refer to a chapter as a step with description in one of your narrative branches.
-
-If you have no previous experience writing gamebooks these are some _tips_:
-
-1. Plan your story. You can make a mind map with each of your narrative branches and which options follow which branch.
-2. Define each chapter and write them with Readteractive.
-3. Visualize your chapter graph with our [CLI](https://github.com/Carleslc/readteractive-generator) whenever you need to have an overview of your book and ensure each chapter have the links you want.
-4. [Build](#how-to-build-your-book) your book from time to time to have a look of how it is looking.
-
-#### How to write options
-
-Each chapter can link to a many different chapters using the following syntax:
-
-```
-(Text -> [next])
-```
-
-Replace `Text` with your custom option text. Replace `next` with the chapter id which this link is pointing to.
-
-Readteractive will generate a link to the chapter on your book for every reference following this syntax.
-
-You can use [Markdown](#markdown) in `Text`.
-
-You can skip the chapter prefix defined for [custom order](#chapter-order) at the moment of writing an option in `next`:
-
-```
-(Go to after -> [after])
-```
-
-This option has the same effect than `(Go to after -> [1-after])` and `(Go to after -> [1_after])`. This prefix skipping only works for digits followed by - or \_.
 
 ### Styling your book
 
@@ -317,16 +322,8 @@ make pdf BOOK=book-example PDF_MARGIN=1cm
 ```
 
 You can define an explicit page break using `\newpage` and explicit new line using `\newline` inside your chapter `.md` file.
-Unfortunately at the moment this only works for PDF version.
+Unfortunately this only works for PDF version.
 
 #### MathML
 
-Math equations are rendered using MathML, supported for HTML and PDF but only for some EPUB3 readers and currently gives unrecognised tags on _KindleGen_ converting to MOBI.
-
-## TODO
-
-- Yeoman CLI to visualize graph links and renaming chapter ids.
-
-- Validate links.
-
-- Additional Readme and Tutorial in Spanish.
+Math equations are rendered using MathML, supported for HTML and PDF but only for some EPUB3 readers, and gives unrecognised tags on _KindleGen_ converting to MOBI.

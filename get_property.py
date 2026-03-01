@@ -30,7 +30,7 @@ def property(yaml, key, file, optional=False, default=None):
 
 def load(file):
     try:
-        return yaml.load(file)
+        return yaml.safe_load(file)
     except (TypeError, yaml.scanner.ScannerError) as e:
         error(str(e), 'YAML SYNTAX ERROR')
 

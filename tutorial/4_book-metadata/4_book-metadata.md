@@ -11,6 +11,7 @@ stylesheet: stylesheet.css
 description: |
     This is the description of your book.
     Hope you enjoy writting with Readteractive.
+github: https://github.com/user/repo
 ```
 
 - (Required) **Title**: The title of your book. You can use (Markdown -> [markdown]) here using **`**bold**`** and _`_italic_`_.
@@ -20,5 +21,6 @@ description: |
 - (Optional) **Cover Image**: File of the main image of your book.
 - (Optional) **Stylesheet**: The (CSS -> [css]) stylesheet of your book.
 - (Optional) **Description**: The description of your book.
+- (Optional) **GitHub**: GitHub repository URL. Displays a corner ribbon link in the HTML version.
 
 (Readteractive Structure: Chapter -> [chapter-structure])
